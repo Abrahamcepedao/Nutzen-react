@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import firebase from "../../database/firebase";
 import { makeStyles } from "@material-ui/core/styles";
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   recipeContainer: {
@@ -40,11 +41,15 @@ function RecetaRow({category, id, classes}) {
             <h2 style={{color: "black",  textAlign: "left"}}>{category}</h2>
             <div>
                 {recipes && recipes.map((item) => (
-                    <div 
-                        className={classes.recipeContainer}
-                        style={{backgroundImage: `url(${item.image})`}}>
-                        <h2>{item.titulo}</h2>
-                    </div>
+                    <Link to="/receta-post">
+                        <div 
+                            className={classes.recipeContainer}
+                            style={{backgroundImage: `url(${item.image})`}}
+                            >
+                            <h2>{item.titulo}</h2>
+                        </div>
+                    </Link>
+                    
                 ))}
             </div>
         </div>

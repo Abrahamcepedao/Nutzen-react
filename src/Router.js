@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 /* Home */
 import Home from "./components/home";
 import Recetas from "./components/recetas/Recetas";
+import RecetaPost from "./components/recetas/RecetaPost";
 import Blog from "./components/blog/Blog";
 import Login from "./components/admin/Login";
 import Admin from "./components/admin/index";
@@ -17,6 +18,7 @@ const Router = () => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/recetas" component={Recetas}/>
+        <Route exact path="/receta-post" component={RecetaPost}/>
         <Route exact path="/blog" component={Blog}/>
         <Route exact path="/login" component={Login}/>
         <Route exact path="/admin" component={Admin}/>
