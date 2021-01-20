@@ -1,9 +1,17 @@
-import React from 'react'
+import React from 'react';
+import { Redirect } from "react-router-dom";
+import { useDataLayerValue } from "../../ContextAPI/DataLayer";
 
 function Tiendas() {
+    const [{user}] = useDataLayerValue();
+    
     return (
         <div>
-            <h1>Admin Tiendas</h1>
+            {user ? (
+                <h1>Admin tiendas</h1>
+            ) : (
+                <Redirect to="/login"/>
+            )}
         </div>
     )
 }
