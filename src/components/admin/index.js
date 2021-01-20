@@ -46,7 +46,6 @@ function Index() {
             ) : (
                 <Redirect to="/login"/>
             )}
-            
         </div>
     )
 }
