@@ -18,10 +18,8 @@ function Login() {
                 type: "SET_USER",
                 user: "Rocio"
             })
-            console.log(user);
         } else{
             setError("Recuerda bien la contraseña mamita bonita..")
-            console.log(error);
         }
     } 
     
