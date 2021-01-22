@@ -1,10 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import firebase from '../../database/firebase';
 import { FormControl, TextField, Button } from '@material-ui/core';
 
 function Recetas() {
     const [ingredients, setIngredients] = useState([{ingredient: ""}]);
     const [steps, setSteps] = useState([{step: ""}]);
     const [notes, setNotes] = useState([{note: ""}]);
+    const [newCategory, setNewCategory] = useState('');
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        firebase.db.collection("recetas").onSnapshot(querySnapshot => {
+            const cat = [];
+            querySnapshot.docs.forEach(doc => {
+                const data = {
+                    titulo: doc.data().titulo,
+                    color: doc.data().color,
+                    id: doc.id
+                }
+                cat.push(data);
+            })
+            setCategories(cat);
+        })
+    }, [categories])
 
     // handle input change
     const handleInputChange = (e, index) => {
@@ -66,9 +84,61 @@ function Recetas() {
         setNotes([...notes, { note: "" }]);
     };
 
+    const addCategory =  (event) => {
+        event.preventDefault();
+        firebase.db.collection("recetas").add({
+            titulo: newCategory,
+            color: "#344333"
+        })
+        setNewCategory("");
+    }
+
+    /* const uplodadImage = async () => {
+        const childPath = `recetas/${firebase.firebase.auth().currentUser.uid}/${Math.random().toString(36)}`
+        const response = await fetch(uri);
+        const blob = await response.blob();
+
+        const task = firebase.storage
+            .ref()
+            .child(childPath)
+            .put(blob);
+
+        const taskProgress = snapshot => {
+            console.log(`transferred: ${snapshot.bytesTransferred}`)
+        }
+        const taskCompleted = () => {
+            task.snapshot.ref.getDownloadURL().then((snapshot) => {
+                savePostData(snapshot)
+                console.log(snapshot)
+            })
+        }
+        const taskError = snapshot => {
+            console.log(snapshot)
+        }
+
+        task.on("state_changed", taskProgress, taskError, taskCompleted);
+    } */
+
     return (
         <div>
             <h1>Sube aquí tus recetas mamita</h1>
+            <form>
+                <FormControl>
+                    <TextField 
+                        id="filled-basic" 
+                        variant="filled" 
+                        placeholder="Ingresa nueva categoria..."
+                        value={newCategory}
+                        onChange={(event) => setNewCategory(event.target.value)}
+                    />
+                </FormControl>
+                <Button 
+                    onClick={addCategory}
+                    disabled={!newCategory}
+                >
+                    Agregar
+                </Button>
+            </form>
             <form>
                 <FormControl>
                     <TextField id="filled-basic" variant="filled" placeholder="Título"/>
