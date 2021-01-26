@@ -14,7 +14,7 @@ function Phrase() {
 
     return (
         <div>
-            <h1>{phrase}</h1>;
+            <h1>{phrase}</h1>
         </div>
     )
 }

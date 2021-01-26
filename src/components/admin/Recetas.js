@@ -129,7 +129,6 @@ function Recetas() {
     const handleImageChange = (e) => {
         if(e.target.files[0]){
             setImage(e.target.files[0]);
-            console.log(e.target.files[0]);
         }
     };
 
