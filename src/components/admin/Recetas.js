@@ -16,7 +16,7 @@ function Recetas() {
 
     useEffect(() => {
         firebase.db.collection("recetas").onSnapshot(querySnapshot => {
-            const cat = [];
+            const cat = []; // categories
             querySnapshot.docs.forEach(doc => {
                 const data = {
                     titulo: doc.data().titulo,
