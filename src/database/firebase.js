@@ -3,7 +3,7 @@ import 'firebase/firestore';
 import 'firebase/firebase-storage'
 
 var firebaseConfig = {
-    apiKey: "AIzaSyC5Tz-RZDtOoWdMWoAfqR30acgtxYTSzz8",
+  apiKey: "AIzaSyC5Tz-RZDtOoWdMWoAfqR30acgtxYTSzz8",
   authDomain: "nutzen-mx2016.firebaseapp.com",
   projectId: "nutzen-mx2016",
   storageBucket: "nutzen-mx2016.appspot.com",
