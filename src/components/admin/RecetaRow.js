@@ -25,7 +25,16 @@ const useStyles = makeStyles((theme) => ({
       top: '7px',
       fontWeight: 'bold',
       textAlign: 'left'
-  }
+  },
+  trashIcon: {
+        position: 'relative',
+        fontSize: '35px',
+        cursor: 'pointer',
+        transition: 'transform 450ms',
+        '&:hover': {
+            transform: 'scale(1.1)'
+        }
+    }
 }));
 
 function RecetaRow({category, id, classes}) {
@@ -63,7 +72,7 @@ function RecetaRow({category, id, classes}) {
                     </div>
                     {/* TrashCan */}
                     <div>
-                        <DeleteIcon onClick={() => removeRecipy(recipy.id)}/>
+                        <DeleteIcon onClick={() => removeRecipy(recipy.id)} className={classes.trashIcon}/>
                     </div>
                 </div>
             ))}
