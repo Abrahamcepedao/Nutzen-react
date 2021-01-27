@@ -7,7 +7,7 @@ import { Col, Row } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import RestaurantMenuIcon from '@material-ui/icons/RestaurantMenu';
-import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
+/* import LibraryBooksIcon from '@material-ui/icons/LibraryBooks'; */
 import StorefrontIcon from '@material-ui/icons/Storefront';
 import CreateIcon from '@material-ui/icons/Create';
 
@@ -44,9 +44,10 @@ const useStyles = makeStyles((theme) => ({
       margin: 'auto',
       marginBottom: '40px',
       borderRadius: '12px',
+      cursor: 'pointer',
       transition: 'transform 450ms',
       '&:hover': {
-        transform:'scale(1.08)'
+        transform:'scale(1.06)'
       }
     },
     itemOverlay: {

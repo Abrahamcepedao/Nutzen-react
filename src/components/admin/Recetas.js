@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import firebase from '../../database/firebase';
 import { makeStyles, withStyles } from "@material-ui/core/styles";
-import { FormControl, TextField, Button, FormGroup, FormLabel, FormControlLabel, Checkbox } from '@material-ui/core';
-import { PRIMARY, TEXT_COLOR, BLACK_BUTTON_PRIMARY, BLACK_BUTTON_SECONDARY } from "../../resources/Colors";
+import { FormControl, TextField, Button, FormGroup, FormControlLabel, Checkbox } from '@material-ui/core';
+import { PRIMARY, BLACK_BUTTON_PRIMARY, BLACK_BUTTON_SECONDARY } from "../../resources/Colors";
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import DeleteIcon from '@material-ui/icons/Delete';
 import RecetaRow from './RecetaRow';
-import { CheckBoxOutlineBlankOutlined } from '@material-ui/icons';
+import { useDataLayerValue } from "../../ContextAPI/DataLayer";
+import { Redirect } from 'react-router-dom';
+import Header from './Header';
 
 const useStyles = makeStyles((theme) => ({
     backgroundContainer: {
@@ -16,7 +18,6 @@ const useStyles = makeStyles((theme) => ({
         width: '100vw',
         maxWidth: '100vw',
         minHeight: '100vh',
-        paddingTop: '50px',
         paddingBottom: '50px',
         textAlign: 'center',
     },
@@ -106,6 +107,7 @@ const MyTextField = withStyles({
 
 function Recetas({classes}) {
     classes = useStyles();
+    const [{user}, dispatch] = useDataLayerValue();
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [ingredients, setIngredients] = useState([{ingredient: ""}]);
@@ -357,8 +359,15 @@ function Recetas({classes}) {
         }
     }
 
+    if(!user){
+        return (
+            <Redirect to="/login"/>
+        )
+    }
+
     return (
         <div className={classes.backgroundContainer}>
+            <Header/>
             <h1 style={{fontWeight: 'bold', marginBottom: '100px'}}>Sube aquí tus recetas mamita</h1>
             
             {/* Add  Category */}
@@ -444,7 +453,7 @@ function Recetas({classes}) {
                     <FormGroup>
                         {categories && categories.map((category) => (
                             <FormControlLabel
-                                control={<Checkbox color="default" icon={<CheckBoxOutlineBlankOutlined/>} checkedIcon={<CheckBoxIcon/>} onChange={checkBoxChange} name={category.titulo} />}
+                                control={<Checkbox color="default" icon={<CheckBoxOutlineBlankIcon/>} checkedIcon={<CheckBoxIcon/>} onChange={checkBoxChange} name={category.titulo} />}
                                 label={category.titulo}
                             />
                         ))}

@@ -111,7 +111,7 @@ function Login({classes}) {
 
     return (
         <div className={classes.backgroundContainer}>
-            <h1>Has tu login mamita</h1>
+            <h1 style={{fontWeight: 'bold'}}>Has tu login mamita</h1>
             <form className={classes.formContainer}>
                 <FormControl  style={{width: '100%',marginBottom: '20px'}}>
                     <MyTextField
