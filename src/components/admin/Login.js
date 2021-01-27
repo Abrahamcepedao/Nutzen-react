@@ -58,6 +58,30 @@ const BlackButton = withStyles((theme) => ({
   },
 }))(Button);
 
+const MyTextField = withStyles({
+  root: {
+    marginBottom: '20px',
+    width: '100%',
+    '& label.Mui-focused': {
+      color: 'black',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: 'black',
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: 'black',
+      },
+      '&:hover fieldset': {
+        borderColor: 'black',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: 'black'
+      },
+    },
+  },
+})(TextField);
+
 function Login({classes}) {
     classes = useStyles();
 
@@ -90,7 +114,7 @@ function Login({classes}) {
             <h1>Has tu login mamita</h1>
             <form className={classes.formContainer}>
                 <FormControl  style={{width: '100%',marginBottom: '20px'}}>
-                    <TextField
+                    <MyTextField
                         id="outlined-password-input"
                         label="Password"
                         type="password"

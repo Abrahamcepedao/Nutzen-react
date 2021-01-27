@@ -1,8 +1,111 @@
 import React, { useState, useEffect } from 'react';
 import firebase from '../../database/firebase';
+import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { FormControl, TextField, Button, FormGroup, FormLabel, FormControlLabel, Checkbox } from '@material-ui/core';
+import { PRIMARY, TEXT_COLOR, BLACK_BUTTON_PRIMARY, BLACK_BUTTON_SECONDARY } from "../../resources/Colors";
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import DeleteIcon from '@material-ui/icons/Delete';
+import RecetaRow from './RecetaRow';
+import { CheckBoxOutlineBlankOutlined } from '@material-ui/icons';
 
-function Recetas() {
+const useStyles = makeStyles((theme) => ({
+    backgroundContainer: {
+        backgroundColor: PRIMARY,
+        position: 'relative',
+        width: '100vw',
+        maxWidth: '100vw',
+        minHeight: '100vh',
+        paddingTop: '50px',
+        paddingBottom: '50px',
+        textAlign: 'center',
+    },
+    formContainer: {
+        width: '90%',
+        maxWidth: '600px',
+        margin: 'auto',
+        marginTop: '100px',
+        backgroundColor: 'rgba(250,250,250,0.25)',
+        padding: '20px 50px',
+        borderRadius: '12px',
+        marginBottom: '50px'
+    },
+    textFieldContainer: {
+        width: '100%',
+        marginBottom: '20px'
+    },
+    formLabel: {
+        textAlign: 'left',
+        fontWeight:'bold'
+    },
+    trashIcon: {
+        position: 'relative',
+        fontSize: '35px',
+        cursor: 'pointer',
+        top: '-10px',
+        transition: 'transform 450ms',
+        '&:hover': {
+            transform: 'scale(1.1)'
+        }
+    }
+}));
+
+const BlackButton = withStyles((theme) => ({
+  root: {
+    color: PRIMARY,
+    backgroundColor: BLACK_BUTTON_PRIMARY,
+    borderRadius: "100px",
+    transition: "transform 450ms",
+    fontWeight: "bolder",
+    padding: "10px 20px",
+    margin: 'auto',
+    marginBottom: '20px',
+    width: '80%',
+    '&:hover': {
+      backgroundColor: BLACK_BUTTON_SECONDARY,
+      transform: "scale(1.08)",
+    },
+    '&:active': {
+      boxShadow: 'none',
+      backgroundColor: BLACK_BUTTON_SECONDARY,
+      border: 'none',
+    },
+    '&:focus': {
+      backgroundColor: BLACK_BUTTON_SECONDARY,
+    },
+    '&:disabled': {
+        opacity: '0.7',
+        color: 'black'
+    }
+  },
+}))(Button);
+
+const MyTextField = withStyles({
+  root: {
+    marginBottom: '20px',
+    width: '100%',
+    '& label.Mui-focused': {
+      color: 'black',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: 'black',
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: 'black',
+      },
+      '&:hover fieldset': {
+        borderColor: 'black',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: 'black'
+      },
+    },
+  },
+})(TextField);
+
+function Recetas({classes}) {
+    classes = useStyles();
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [ingredients, setIngredients] = useState([{ingredient: ""}]);
@@ -13,6 +116,8 @@ function Recetas() {
     const [selectedCategories, setSelectedCategories] = useState([]);
     const [image, setImage] = useState(null);
     const [progress, setProgress] = useState(0);
+    const [recipyError, setRecipyError] = useState('');
+    const [categoryError, setCategoryError] = useState('');
 
     useEffect(() => {
         firebase.db.collection("recetas").onSnapshot(querySnapshot => {
@@ -25,7 +130,6 @@ function Recetas() {
                 }
                 cat.push(data);
             })
-            console.log(cat);
             setCategories(cat);
         })
     }, [])
@@ -38,10 +142,11 @@ function Recetas() {
     };
 
     // handle click event of the Remove button
-    const handleRemoveClick = index => {
+    const handleRemoveClick = (index) => {
         const list = [...ingredients];
         list.splice(index, 1);
         setIngredients(list);
+        
     };
 
     // handle click event of the Add button
@@ -89,15 +194,25 @@ function Recetas() {
 
     const addCategory = (event) => {
         event.preventDefault();
-        firebase.db.collection("recetas").add({
-            titulo: newCategory,
-            color: "#344333"
+        var val = true;
+        categories.map(cat => {
+            if(cat.titulo === newCategory){
+                val = false;
+            }
         })
-        setNewCategory("");
+        if(val){
+            firebase.db.collection("recetas").add({
+                titulo: newCategory,
+                color: "#344333"
+            })
+            setNewCategory("");
+        } else{
+            setCategoryError("¡Rouss checa que la nueva categoría no exista!");
+        }
+        
     }
 
     const checkBoxChange = (event) => {
-        
         if(event.target.checked  && selectedCategories.indexOf(event.target.name) == -1){
             const data = selectedCategories;
             data.push(event.target.name);
@@ -107,18 +222,11 @@ function Recetas() {
             data.splice(data.indexOf(event.target.name),1)
             setSelectedCategories(data);
         }
-        
-
-        console.log(selectedCategories);
-        
-        
     }
 
     const getCategoryID = (category) => {
         let categoryID = "";
         categories.map(cat => {
-            console.log(cat.titulo);
-            console.log(cat.titulo ===  category);
             if(cat.titulo === category){
                 categoryID = cat.id;
             }
@@ -132,155 +240,236 @@ function Recetas() {
         }
     };
 
-    const handleUpload = () => {
-        selectedCategories.forEach(category => {
-            const categoryID = getCategoryID(category);
-            console.log("category: ",category);
-            const uploadTask = firebase.storage.ref(`recetas/${category}/${image.name}`).put(image);
-            uploadTask.on(
-                "state_changed",
-                (snapshot) =>  {
-                    // progress  function
-                    const progress = Math.round(
-                        (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-                    );
-                    setProgress(progress)
-                },
-                (error) => {
-                    // error function
-                    console.log(error);
-                    alert(error.message);
-                },
-                () => {
-                    // complete function
-                    firebase.storage
-                        .ref(`recetas/${category}`)
-                        .child(image.name)
-                        .getDownloadURL()
-                        .then(url => {
-                            console.log("category ID", categoryID);
-                            firebase.db.collection("recetas").doc(categoryID).collection(category).add({
-                                descripcion: description,
-                                titulo: title,
-                                image: url
-                            })
-                            .then(docRef => {
-                                ingredients.forEach(ing => {
-                                    firebase.db.collection("recetas").doc(categoryID).collection(category).doc(docRef.id).collection("ingredientes").add({
-                                        texto: ing.ingredient
-                                    })
-                                });
-                                steps.forEach(step => {
-                                    firebase.db.collection("recetas").doc(categoryID).collection(category).doc(docRef.id).collection("proceso").add({
-                                        texto: step.step
-                                    })
-                                });
-                                notes.forEach(note => {
-                                    firebase.db.collection("recetas").doc(categoryID).collection(category).doc(docRef.id).collection("notas").add({
-                                        texto: note.note
-                                    })
-                                });
-                            })
-                            setProgress(0);
-                            setImage(null);
-                        });
-                }
-            )
+    const validity = () => {
+        /* <--title--> */
+        if(!title){
+            return false;
+        }
+
+        /* <--description--> */
+        if(!description){
+            return false;
+        }
+
+        /* <--ingredients--> */
+        ingredients.map((ing, index) => {
+            if(ing === ""){
+                ingredients.splice(index, 1);
+            }
         })
-        
+        if(ingredients.length === 0){
+            return false;
+        }
+
+        /* <--steps--> */
+        steps.map((step, index) => {
+            if(step === ""){
+                steps.splice(index, 1);
+            }
+        })
+        if(steps.length === 0){
+            return false;
+        }
+
+        /* <--notes--> */
+        notes.map((note, index) => {
+            if(note === ""){
+                notes.splice(index, 1);
+            }
+        })
+        if(steps.length === 0){
+            return false;
+        }
+
+        /* <--selectedCategories--> */
+        if(selectedCategories.length === 0){
+            return false;
+        }
+
+        /* <--image--> */
+        if(!image){
+            return false;
+        }
+
+        /* everything ok */
+        return true;
+    }
+
+    const handleUpload = () => {
+        if(validity()){
+            selectedCategories.forEach(category => {
+                const categoryID = getCategoryID(category);
+                console.log("category: ",category);
+                const uploadTask = firebase.storage.ref(`recetas/${category}/${image.name}`).put(image);
+                uploadTask.on(
+                    "state_changed",
+                    (snapshot) =>  {
+                        // progress  function
+                        const progress = Math.round(
+                            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                        );
+                        setProgress(progress)
+                    },
+                    (error) => {
+                        // error function
+                        console.log(error);
+                        alert(error.message);
+                    },
+                    () => {
+                        // complete function
+                        firebase.storage
+                            .ref(`recetas/${category}`)
+                            .child(image.name)
+                            .getDownloadURL()
+                            .then(url => {
+                                console.log("category ID", categoryID);
+                                firebase.db.collection("recetas").doc(categoryID).collection(category).add({
+                                    descripcion: description,
+                                    titulo: title,
+                                    image: url
+                                })
+                                .then(docRef => {
+                                    ingredients.forEach(ing => {
+                                        firebase.db.collection("recetas").doc(categoryID).collection(category).doc(docRef.id).collection("ingredientes").add({
+                                            texto: ing.ingredient
+                                        })
+                                    });
+                                    steps.forEach(step => {
+                                        firebase.db.collection("recetas").doc(categoryID).collection(category).doc(docRef.id).collection("proceso").add({
+                                            texto: step.step
+                                        })
+                                    });
+                                    notes.forEach(note => {
+                                        firebase.db.collection("recetas").doc(categoryID).collection(category).doc(docRef.id).collection("notas").add({
+                                            texto: note.note
+                                        })
+                                    });
+                                })
+                                setProgress(0);
+                                setImage(null);
+                            });
+                    }
+                )
+            })
+            setRecipyError('');
+        } else{
+            setRecipyError("¡Mamitaa recuerda poner toda la info!")
+        }
     }
 
     return (
-        <div>
-            <h1>Sube aquí tus recetas mamita</h1>
-            <form>
-                <FormControl>
-                    <TextField 
-                        id="filled-basic" 
-                        variant="filled" 
+        <div className={classes.backgroundContainer}>
+            <h1 style={{fontWeight: 'bold', marginBottom: '100px'}}>Sube aquí tus recetas mamita</h1>
+            
+            {/* Add  Category */}
+            <form className={classes.formContainer}>
+                <h3 style={{fontWeight: 'bold', marginBottom: '50px'}}>Agrega categorias rouss</h3>
+                <FormControl style={{width: '100%'}}>
+                    <MyTextField 
+                        variant="outlined"
+                        id="custom-css-outlined-input"
                         placeholder="Ingresa nueva categoria..."
                         value={newCategory}
                         onChange={(event) => setNewCategory(event.target.value)}
                     />
                 </FormControl>
-                <Button 
+                <BlackButton 
                     onClick={addCategory}
                     disabled={!newCategory}
                 >
                     Agregar
-                </Button>
+                </BlackButton>
+                {categoryError && (
+                    <h4 style={{fontWeight: 'bold'}}>{categoryError}</h4>
+                )}
             </form>
-            <form>
-                <FormControl>
-                    <TextField id="filled-basic" variant="filled" placeholder="Título" value={title} onChange={e => setTitle(e.target.value)}/>
-                    <TextField id="filled-basic" variant="filled" placeholder="Descripción" value={description} onChange={e => setDescription(e.target.value)}/>
-                    <p>Ingredientes</p>
+
+            {/* Add recipe */}
+            <form className={classes.formContainer}>
+                <h3 style={{fontWeight: 'bold', marginBottom: '50px'}}>Agrega recetas rouss</h3>
+                <FormControl style={{width:'100%'}}>
+                    <MyTextField variant="outlined" id="custom-css-outlined-input" placeholder="Título" value={title} onChange={e => setTitle(e.target.value)}/>
+                    <MyTextField variant="outlined" id="custom-css-outlined-input" placeholder="Descripción" value={description} onChange={e => setDescription(e.target.value)}/>
+                    <p className={classes.formLabel}>Ingredientes</p>
                     {ingredients.map((item, i) => {
                         return (
-                            <div>
-                                <TextField 
+                            <div style={{display: 'flex', alignItems: 'center'}}>
+                                <MyTextField variant="outlined" id="custom-css-outlined-input" 
                                     placeholder="Escribe ingrediente mamita..."
+                                    value={item.ingredient}
                                     onChange={e => handleInputChange(e, i)}
                                 />
-
+                                <DeleteIcon className={classes.trashIcon} onClick={e => handleRemoveClick(i)}/>
                             </div>
                         )
                     })}
-                    <Button onClick={handleAddClick}>
+                    <BlackButton onClick={handleAddClick}>
                         Add
-                    </Button>
+                    </BlackButton>
                     
-                    <p>Proceso</p>
+                    <p className={classes.formLabel}>Proceso</p>
                     {steps.map((item, i) => {
                         return (
-                            <div>
-                                <TextField 
+                            <div style={{display: 'flex', alignItems: 'center'}}>
+                                <MyTextField variant="outlined" id="custom-css-outlined-input" 
                                     placeholder="Escribe paso mamita..."
+                                    value={item.step}
                                     onChange={e => handleInputChangeSteps(e, i)}
                                 />
-
+                                <DeleteIcon className={classes.trashIcon} onClick={e => handleRemoveClickSteps(i)}/>
                             </div>
-                            
                         )
                     })}
-                    <Button onClick={handleAddClickSteps}>
+                    <BlackButton onClick={handleAddClickSteps}>
                         Add
-                    </Button>
+                    </BlackButton>
                     
-                    <p>Notas</p>
+                    <p className={classes.formLabel}>Notas</p>
                     {notes.map((item, i) => {
                         return (
-                            <div>
-                                <TextField 
+                            <div style={{display: 'flex', alignItems: 'center'}}>
+                                <MyTextField variant="outlined" id="custom-css-outlined-input" 
                                     placeholder="Escribe nota mamita..."
+                                    value={item.note}
                                     onChange={e => handleInputChangeNotes(e, i)}
                                 />
-
+                                <DeleteIcon className={classes.trashIcon} onClick={e => handleRemoveClickNotes(i)}/>
                             </div>
-                            
                         )
                     })}
-                    <Button onClick={handleAddClickNotes}>
+                    <BlackButton onClick={handleAddClickNotes}>
                         Add
-                    </Button>
-                    <FormLabel component="legend">Select categories</FormLabel>
+                    </BlackButton>
+                    <p className={classes.formLabel}>Selecciona categorias doña rous</p>
                     <FormGroup>
                         {categories && categories.map((category) => (
                             <FormControlLabel
-                                control={<Checkbox onChange={checkBoxChange} name={category.titulo} />}
+                                control={<Checkbox color="default" icon={<CheckBoxOutlineBlankOutlined/>} checkedIcon={<CheckBoxIcon/>} onChange={checkBoxChange} name={category.titulo} />}
                                 label={category.titulo}
                             />
                         ))}
                     </FormGroup>
-
-                    <progress className="imageUpload__progress" value={progress} max="100"/>
-                    <input type="file" onChange={handleImageChange}/>
-                    <Button onClick={handleUpload}>
-                        Upload Image
-                    </Button>
+                    <p className={classes.formLabel}>Selecciona una imagen doña rous</p>
+                    <input style={{margin: 'auto', width: '100%', marginBottom: '20px', textAlign: 'center'}} type="file" onChange={handleImageChange}/>
+                    <progress style={{margin: 'auto', width: '100%', marginBottom: '20px'}} className="imageUpload__progress" value={progress} max="100"/>
+                    <BlackButton onClick={handleUpload}>
+                        Agregar receta
+                    </BlackButton>
+                    {recipyError && (
+                        <h4 style={{fontWeight: 'bold'}}>{recipyError}</h4>
+                    )}
                 </FormControl>
             </form>
             
+            {/* Delete recipes */}
+            <div className={classes.formContainer}>
+                <h3 style={{fontWeight: 'bold', marginBottom: '50px'}}>Borra recetas rouss</h3>
+                <div>
+                    {categories && categories.map((category) => (
+                        <RecetaRow category={category.titulo} id={category.id}/>
+                    ))}
+                </div>
+            </div>
         </div>
     )
 }

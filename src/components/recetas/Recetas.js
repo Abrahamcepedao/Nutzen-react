@@ -28,9 +28,7 @@ function Recetas() {
             <h1>Recetas</h1>
             {/* Receta Row */}
             {categories  && categories.map((category) => (
-                <div>
-                    <RecetaRow category={category.titulo} id={category.id}/>
-                </div>
+                <RecetaRow category={category.titulo} id={category.id}/>
             ))}
         </div>
     )

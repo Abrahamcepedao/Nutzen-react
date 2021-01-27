@@ -59,13 +59,13 @@ function RecetaRow({category, id, classes}) {
         <div>
             <h2 style={{color: "black",  textAlign: "left"}}>{category}</h2>
             <div>
-                {recipes && recipes.map((item) => (
-                    <Link to="/receta-post" onClick={() => setRecipy(item.id)}>
+                {recipes && recipes.map((recipy) => (
+                    <Link to="/receta-post" onClick={() => setRecipy(recipy.id)}>
                         <div 
                             className={classes.recipeContainer}
-                            style={{backgroundImage: `url(${item.image})`}}
+                            style={{backgroundImage: `url(${recipy.image})`}}
                             >
-                            <h2>{item.titulo}</h2>
+                            <h2>{recipy.titulo}</h2>
                         </div>
                     </Link>
                     

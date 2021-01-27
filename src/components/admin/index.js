@@ -81,7 +81,7 @@ function Index({classes}) {
                 <div className={classes.backgroundContainer}>
                     <h1 style={{marginBottom: '100px', fontWeight: 'bold', color: TEXT_COLOR}}>Bienvenida mamita bonita</h1>
                     <Row className={classes.itemsContainer}>
-                        <Col sm={6} xl={3}>
+                        <Col sm={6} xl={4}>
                           <Link to="/admin/recetas" className={classes.itemLink}>
                               <div className={classes.item}>
                                 <div className={classes.itemOverlay}>
@@ -93,7 +93,7 @@ function Index({classes}) {
                               </div>
                             </Link>
                         </Col>
-                        <Col sm={6} xl={3}>
+                        {/* <Col sm={6} xl={3}>
                           <Link to="/admin/blog" className={classes.itemLink}>
                               <div className={classes.item}>
                                    <div className={classes.itemOverlay}>
@@ -104,22 +104,22 @@ function Index({classes}) {
                                 </div>
                               </div>
                             </Link>
-                        </Col>
-                        <Col sm={6} xl={3}>
+                        </Col> */}
+                        <Col sm={6} xl={4}>
                           <Link to="/admin/tiendas" className={classes.itemLink}>
-                              <div className={classes.item}>
+                              <div className={classes.item} style={{backgroundImage: 'url(./img/admin/store.png)'}}>
                                    <div className={classes.itemOverlay}>
-                                  <div className={classes.itemWrapper}>
-                                    <h3>Tienda</h3>
-                                    <StorefrontIcon className={classes.itemIcon}/>
-                                  </div>
+                                    <div className={classes.itemWrapper}>
+                                      <h3>Tienda</h3>
+                                      <StorefrontIcon className={classes.itemIcon}/>
+                                    </div>
                                 </div>
                               </div>
                             </Link>
                         </Col>
-                        <Col sm={6} xl={3}>
+                        <Col sm={6} xl={4}>
                           <Link to="/admin/frase" className={classes.itemLink}>
-                              <div className={classes.item}>
+                              <div className={classes.item} style={{backgroundImage: 'url(./img/admin/frase.png)'}}>
                                    <div className={classes.itemOverlay}>
                                   <div className={classes.itemWrapper}>
                                     <h3>Frase</h3>
