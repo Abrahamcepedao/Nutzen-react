@@ -2,6 +2,7 @@ import { Button, TextField } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
 import { Redirect } from "react-router-dom";
 import { useDataLayerValue } from "../../ContextAPI/DataLayer";
+import firebase from '../../database/firebase';
 
 function Tiendas() {
     const [{user}] = useDataLayerValue();
@@ -22,7 +23,7 @@ function Tiendas() {
     };
 
     const handleUpload = () => {
-            const uploadTask = firebase.storage.ref(`recetas/${category}/${image.name}`).put(image);
+            const uploadTask = firebase.storage.ref(`tiendas/${image.name}`).put(image);
             uploadTask.on(
                 "state_changed",
                 (snapshot) =>  {
@@ -40,32 +41,13 @@ function Tiendas() {
                 () => {
                     // complete function
                     firebase.storage
-                        .ref(`recetas/${category}`)
+                        .ref(`tiendas`)
                         .child(image.name)
                         .getDownloadURL()
-                        .then(url => {
-                            console.log("category ID", categoryID);
-                            firebase.db.collection("recetas").doc(categoryID).collection(category).add({
-                                descripcion: description,
-                                titulo: title,
-                                image: url
-                            })
-                            .then(docRef => {
-                                ingredients.forEach(ing => {
-                                    firebase.db.collection("recetas").doc(categoryID).collection(category).doc(docRef.id).collection("ingredientes").add({
-                                        texto: ing.ingredient
-                                    })
-                                });
-                                steps.forEach(step => {
-                                    firebase.db.collection("recetas").doc(categoryID).collection(category).doc(docRef.id).collection("proceso").add({
-                                        texto: step.step
-                                    })
-                                });
-                                notes.forEach(note => {
-                                    firebase.db.collection("recetas").doc(categoryID).collection(category).doc(docRef.id).collection("notas").add({
-                                        texto: note.note
-                                    })
-                                });
+                        .then(imageUrl => {
+                            firebase.db.collection("tiendas").add({
+                                image: imageUrl,
+                                url: url
                             })
                             setProgress(0);
                             setImage(null);
@@ -80,7 +62,7 @@ function Tiendas() {
             {user ? (
                 <>
                     <h1>Admin tiendas</h1>
-                    <TextField placeholder="Agregar url.."/>
+                    <TextField placeholder="Agregar url.." value={url} onChange={e => setUrl(e.target.value)}/>
                     <progress className="imageUpload__progress" value={progress} max="100"/>
                     <input type="file" onChange={handleImageChange}/>
                     <Button onClick={handleUpload}>
