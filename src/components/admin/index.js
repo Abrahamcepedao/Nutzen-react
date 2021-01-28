@@ -111,7 +111,7 @@ function Index({classes}) {
                               <div className={classes.item} style={{backgroundImage: 'url(./img/admin/store.png)'}}>
                                    <div className={classes.itemOverlay}>
                                     <div className={classes.itemWrapper}>
-                                      <h3>Tienda</h3>
+                                      <h3>Tiendas</h3>
                                       <StorefrontIcon className={classes.itemIcon}/>
                                     </div>
                                 </div>

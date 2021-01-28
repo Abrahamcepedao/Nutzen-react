@@ -118,8 +118,14 @@ function Recetas({classes}) {
     const [selectedCategories, setSelectedCategories] = useState([]);
     const [image, setImage] = useState(null);
     const [progress, setProgress] = useState(0);
+
+    //error
     const [recipyError, setRecipyError] = useState('');
     const [categoryError, setCategoryError] = useState('');
+
+    //success
+    const [catSucces, setCatSucces] = useState('');
+    const [recipySucces, setRecipySucces] = useState('');
 
     useEffect(() => {
         firebase.db.collection("recetas").onSnapshot(querySnapshot => {
@@ -208,6 +214,7 @@ function Recetas({classes}) {
                 color: "#344333"
             })
             setNewCategory("");
+            setCatSucces("Ya se agregó la categoría mamitaa");
         } else{
             setCategoryError("¡Rouss checa que la nueva categoría no exista!");
         }
@@ -347,13 +354,19 @@ function Recetas({classes}) {
                                         })
                                     });
                                 })
-                                setProgress(0);
-                                setImage(null);
                             });
                     }
                 )
             })
             setRecipyError('');
+            setProgress(0);
+            setImage(null);
+            setTitle('');
+            setDescription('');
+            setIngredients([{ingredient: ""}]);
+            setSteps([{step: ""}]);
+            setNotes([{note: ""}]);
+            setSelectedCategories([]);
         } else{
             setRecipyError("¡Mamitaa recuerda poner toda la info!")
         }
@@ -377,7 +390,7 @@ function Recetas({classes}) {
                     <MyTextField 
                         variant="outlined"
                         id="custom-css-outlined-input"
-                        placeholder="Ingresa nueva categoria..."
+                        placeholder="Ingresa nueva categoria mamitaa"
                         value={newCategory}
                         onChange={(event) => setNewCategory(event.target.value)}
                     />

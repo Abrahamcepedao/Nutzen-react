@@ -116,7 +116,7 @@ function Login({classes}) {
                 <FormControl  style={{width: '100%',marginBottom: '20px'}}>
                     <MyTextField
                         id="outlined-password-input"
-                        label="Password"
+                        label="Pon la contraseña mamitaa"
                         type="password"
                         autoComplete="current-password"
                         variant="outlined"
