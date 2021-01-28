@@ -1,16 +1,30 @@
 import React, { useState, useEffect } from 'react';
+
+//Firebase
 import firebase from '../../database/firebase';
+
+//MaterialUI
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { FormControl, TextField, Button, FormGroup, FormControlLabel, Checkbox } from '@material-ui/core';
-import { PRIMARY, BLACK_BUTTON_PRIMARY, BLACK_BUTTON_SECONDARY } from "../../resources/Colors";
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import DeleteIcon from '@material-ui/icons/Delete';
-import RecetaRow from './RecetaRow';
-import { useDataLayerValue } from "../../ContextAPI/DataLayer";
-import { Redirect } from 'react-router-dom';
-import Header from './Header';
 
+//Colors
+import { PRIMARY, BLACK_BUTTON_PRIMARY, BLACK_BUTTON_SECONDARY } from "../../resources/Colors";
+
+//DataLayer
+import { useDataLayerValue } from "../../ContextAPI/DataLayer";
+
+//Router
+import { Redirect } from 'react-router-dom';
+
+//Components
+import Header from './Header';
+import RecetaRow from './RecetaRow';
+
+
+//Styles
 const useStyles = makeStyles((theme) => ({
     backgroundContainer: {
         backgroundColor: PRIMARY,
@@ -105,19 +119,28 @@ const MyTextField = withStyles({
   },
 })(TextField);
 
+
+
+
 function Recetas({classes}) {
     classes = useStyles();
+    
+    //data layer
     const [{user}, dispatch] = useDataLayerValue();
+
+    //recipy info
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [ingredients, setIngredients] = useState([{ingredient: ""}]);
     const [steps, setSteps] = useState([{step: ""}]);
     const [notes, setNotes] = useState([{note: ""}]);
-    const [newCategory, setNewCategory] = useState('');
-    const [categories, setCategories] = useState([]);
     const [selectedCategories, setSelectedCategories] = useState([]);
     const [image, setImage] = useState(null);
     const [progress, setProgress] = useState(0);
+
+    //categories
+    const [newCategory, setNewCategory] = useState('');
+    const [categories, setCategories] = useState([]);
 
     //error
     const [recipyError, setRecipyError] = useState('');
@@ -358,6 +381,7 @@ function Recetas({classes}) {
                     }
                 )
             })
+            //recetes values
             setRecipyError('');
             setProgress(0);
             setImage(null);
@@ -367,6 +391,7 @@ function Recetas({classes}) {
             setSteps([{step: ""}]);
             setNotes([{note: ""}]);
             setSelectedCategories([]);
+            setRecipySucces("Ya se agregó la receta mamitaa")
         } else{
             setRecipyError("¡Mamitaa recuerda poner toda la info!")
         }
@@ -477,6 +502,9 @@ function Recetas({classes}) {
                     <BlackButton onClick={handleUpload}>
                         Agregar receta
                     </BlackButton>
+                    {recipySucces && (
+                        <h4 style={{fontWeight: 'bold'}}>{recipySucces}</h4>
+                    )}
                     {recipyError && (
                         <h4 style={{fontWeight: 'bold'}}>{recipyError}</h4>
                     )}
@@ -484,6 +512,16 @@ function Recetas({classes}) {
             </form>
             
             {/* Delete recipes */}
+            <div className={classes.formContainer}>
+                <h3 style={{fontWeight: 'bold', marginBottom: '50px'}}>Borra recetas rouss</h3>
+                <div>
+                    {categories && categories.map((category) => (
+                        <RecetaRow category={category.titulo} id={category.id}/>
+                    ))}
+                </div>
+            </div>
+
+            {/* Delete categories */}
             <div className={classes.formContainer}>
                 <h3 style={{fontWeight: 'bold', marginBottom: '50px'}}>Borra recetas rouss</h3>
                 <div>
