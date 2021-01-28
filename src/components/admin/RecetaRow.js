@@ -6,8 +6,11 @@ import firebase from "../../database/firebase";
 //MaterialUI
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { Button } from '@material-ui/core'
-import DeleteIcon from '@material-ui/icons/Delete';
 import Collapse from '@material-ui/core/Collapse';
+
+//MaterialUI - icons
+import DeleteIcon from '@material-ui/icons/Delete';
+import CreateIcon from '@material-ui/icons/Create';
 
 //Colors
 import { PRIMARY, BLACK_BUTTON_PRIMARY, BLACK_BUTTON_SECONDARY, RED_BUTTON_PRIMARY, RED_BUTTON_SECONDARY } from "../../resources/Colors";
@@ -162,7 +165,7 @@ function RecetaRow({category, id, classes}) {
                 <div className={classes.recipyContainer} key={recipy.id}>
 
                     {/* Recipy data */}
-                    <div  className={classes.recipyInnerContainer} style={{marginBottom: response[index].state && "20px"}}>
+                    <div  className={classes.recipyInnerContainer} style={{marginBottom: response.length != 0 && response[index].state && "20px"}}>
                         {/* image */}
                         <div className={classes.image} style={{backgroundImage: `url(${recipy.image})`}}></div>
                         {/* Title */}
@@ -178,7 +181,7 @@ function RecetaRow({category, id, classes}) {
                     {/* Collapse */}
                     {response.length != 0 && (
                         <Collapse in={response[index].state} >
-                                <h5>¿Estas segura que quieres borrar la receta mamita?</h5>
+                                <h5>¿Estas segura de borrar la receta mamita?</h5>
                                 <div className={classes.btnsContainer}>
                                     <div>
                                         <BlackButton onClick={() => handleChange(index)}>

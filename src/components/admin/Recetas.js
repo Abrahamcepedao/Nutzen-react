@@ -22,6 +22,7 @@ import { Redirect } from 'react-router-dom';
 //Components
 import Header from './Header';
 import RecetaRow from './RecetaRow';
+import CategoryRow from './CategoryRow';
 
 
 //Styles
@@ -331,7 +332,6 @@ function Recetas({classes}) {
         if(validity()){
             selectedCategories.forEach(category => {
                 const categoryID = getCategoryID(category);
-                console.log("category: ",category);
                 const uploadTask = firebase.storage.ref(`recetas/${category}/${image.name}`).put(image);
                 uploadTask.on(
                     "state_changed",
@@ -523,10 +523,10 @@ function Recetas({classes}) {
 
             {/* Delete categories */}
             <div className={classes.formContainer}>
-                <h3 style={{fontWeight: 'bold', marginBottom: '50px'}}>Borra recetas rouss</h3>
+                <h3 style={{fontWeight: 'bold', marginBottom: '50px'}}>Borra categorías rouss</h3>
                 <div>
                     {categories && categories.map((category) => (
-                        <RecetaRow category={category.titulo} id={category.id}/>
+                        <CategoryRow category={category.titulo} id={category.id}/>
                     ))}
                 </div>
             </div>
