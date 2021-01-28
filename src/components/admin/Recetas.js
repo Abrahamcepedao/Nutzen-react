@@ -460,7 +460,7 @@ function Recetas({classes}) {
                     </FormGroup>
                     <p className={classes.formLabel}>Selecciona una imagen doña rous</p>
                     <input style={{margin: 'auto', width: '100%', marginBottom: '20px', textAlign: 'center'}} type="file" onChange={handleImageChange}/>
-                    <progress style={{margin: 'auto', width: '100%', marginBottom: '20px'}} className="imageUpload__progress" value={progress} max="100"/>
+                    <progress style={{margin: 'auto', width: '100%', marginBottom: '20px'}} value={progress} max="100"/>
                     <BlackButton onClick={handleUpload}>
                         Agregar receta
                     </BlackButton>
