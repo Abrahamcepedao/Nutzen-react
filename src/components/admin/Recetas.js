@@ -157,7 +157,7 @@ function Recetas({classes}) {
             querySnapshot.docs.forEach(doc => {
                 const data = {
                     titulo: doc.data().titulo,
-                    color: doc.data().color,
+                    displayTitle: doc.data().displayTitle,
                     id: doc.id
                 }
                 cat.push(data);
@@ -235,7 +235,7 @@ function Recetas({classes}) {
         if(val){
             firebase.db.collection("recetas").add({
                 titulo: newCategory,
-                color: "#344333"
+                displayTitle: newCategory,
             })
             setNewCategory("");
             setCatSucces("Ya se agregó la categoría mamitaa");
@@ -355,24 +355,24 @@ function Recetas({classes}) {
                             .getDownloadURL()
                             .then(url => {
                                 console.log("category ID", categoryID);
-                                firebase.db.collection("recetas").doc(categoryID).collection(category).add({
+                                firebase.db.collection("recetas").doc(categoryID).collection("listaRecetas").add({
                                     descripcion: description,
                                     titulo: title,
                                     image: url
                                 })
                                 .then(docRef => {
                                     ingredients.forEach(ing => {
-                                        firebase.db.collection("recetas").doc(categoryID).collection(category).doc(docRef.id).collection("ingredientes").add({
+                                        firebase.db.collection("recetas").doc(categoryID).collection("listaRecetas").doc(docRef.id).collection("ingredientes").add({
                                             texto: ing.ingredient
                                         })
                                     });
                                     steps.forEach(step => {
-                                        firebase.db.collection("recetas").doc(categoryID).collection(category).doc(docRef.id).collection("proceso").add({
+                                        firebase.db.collection("recetas").doc(categoryID).collection("listaRecetas").doc(docRef.id).collection("proceso").add({
                                             texto: step.step
                                         })
                                     });
                                     notes.forEach(note => {
-                                        firebase.db.collection("recetas").doc(categoryID).collection(category).doc(docRef.id).collection("notas").add({
+                                        firebase.db.collection("recetas").doc(categoryID).collection("listaRecetas").doc(docRef.id).collection("notas").add({
                                             texto: note.note
                                         })
                                     });
@@ -426,6 +426,9 @@ function Recetas({classes}) {
                 >
                     Agregar
                 </BlackButton>
+                {catSucces && (
+                    <h4 style={{fontWeight: 'bold'}}>{catSucces}</h4>
+                )}
                 {categoryError && (
                     <h4 style={{fontWeight: 'bold'}}>{categoryError}</h4>
                 )}
@@ -492,7 +495,7 @@ function Recetas({classes}) {
                         {categories && categories.map((category) => (
                             <FormControlLabel
                                 control={<Checkbox color="default" icon={<CheckBoxOutlineBlankIcon/>} checkedIcon={<CheckBoxIcon/>} onChange={checkBoxChange} name={category.titulo} />}
-                                label={category.titulo}
+                                label={category.displayTitle}
                             />
                         ))}
                     </FormGroup>
@@ -516,7 +519,7 @@ function Recetas({classes}) {
                 <h3 style={{fontWeight: 'bold', marginBottom: '50px'}}>Borra recetas rouss</h3>
                 <div>
                     {categories && categories.map((category) => (
-                        <RecetaRow category={category.titulo} id={category.id}/>
+                        <RecetaRow category={category.displayTitle} id={category.id}/>
                     ))}
                 </div>
             </div>
@@ -526,7 +529,7 @@ function Recetas({classes}) {
                 <h3 style={{fontWeight: 'bold', marginBottom: '50px'}}>Borra categorías rouss</h3>
                 <div>
                     {categories && categories.map((category) => (
-                        <CategoryRow category={category.titulo} id={category.id}/>
+                        <CategoryRow category={category.displayTitle} id={category.id}/>
                     ))}
                 </div>
             </div>

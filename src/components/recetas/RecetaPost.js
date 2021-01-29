@@ -24,14 +24,13 @@ function RecetaPost({classes}) {
         console.log(recipyId);
 
         if(categoryId){
-            firebase.db.collection("recetas").doc(categoryId).collection(categoryTitle).doc(recipyId).onSnapshot(snapshot => {
-                console.log(snapshot.data());
+            firebase.db.collection("recetas").doc(categoryId).collection("listaRecetas").doc(recipyId).onSnapshot(snapshot => {
                 setTitle(snapshot.data().titulo);
                 setDescription(snapshot.data().descripcion);
                 setImage(snapshot.data().image);
             })
             //ingredientes
-            firebase.db.collection("recetas").doc(categoryId).collection(categoryTitle).doc(recipyId).collection("ingredientes").onSnapshot(doc => {
+            firebase.db.collection("recetas").doc(categoryId).collection("listaRecetas").doc(recipyId).collection("ingredientes").onSnapshot(doc => {
                 const ing = [];
                 doc.docs.forEach(ingrediente => {
                     const data = {
@@ -45,7 +44,7 @@ function RecetaPost({classes}) {
             
 
             //proceso
-            firebase.db.collection("recetas").doc(categoryId).collection(categoryTitle).doc(recipyId).collection("proceso").onSnapshot(doc => {
+            firebase.db.collection("recetas").doc(categoryId).collection("listaRecetas").doc(recipyId).collection("proceso").onSnapshot(doc => {
                 const pro = [];
                 doc.docs.forEach(proceso => {
                     const data = {
@@ -58,7 +57,7 @@ function RecetaPost({classes}) {
             })
 
             //notas
-            firebase.db.collection("recetas").doc(categoryId).collection(categoryTitle).doc(recipyId).collection("notas").onSnapshot(doc => {
+            firebase.db.collection("recetas").doc(categoryId).collection("listaRecetas").doc(recipyId).collection("notas").onSnapshot(doc => {
                 const not = [];
                 doc.docs.forEach(nota => {
                     const data = {

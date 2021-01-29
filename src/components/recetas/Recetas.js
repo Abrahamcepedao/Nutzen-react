@@ -12,12 +12,12 @@ function Recetas() {
             querySnapshot.docs.forEach(doc => {
                 const data = {
                     titulo: doc.data().titulo,
-                    color: doc.data().color,
+                    displayTitle: doc.data().displayTitle,
                     id: doc.id
                 }
                 cat.push(data);
             })
-            console.log("categories", cat)
+            //console.log("categories", cat)
             setCategories(cat);
         })
     },[])
@@ -28,7 +28,7 @@ function Recetas() {
             <h1>Recetas</h1>
             {/* Receta Row */}
             {categories  && categories.map((category) => (
-                <RecetaRow category={category.titulo} id={category.id}/>
+                <RecetaRow category={category.displayTitle} id={category.id}/>
             ))}
         </div>
     )

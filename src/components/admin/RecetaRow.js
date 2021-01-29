@@ -127,9 +127,9 @@ function RecetaRow({category, id, classes}) {
     const [response, setResponse] = useState([]);
 
     useEffect(() => {
-        firebase.db.collection("recetas").doc(id).collection(category).onSnapshot(snapshot => {
+        firebase.db.collection("recetas").doc(id).collection("listaRecetas").onSnapshot(snapshot => {
             const rec = []; // recipes
-            const res = [];
+            const res = []; // response
             snapshot.docs.forEach(doc => {
                 const data = {
                     titulo: doc.data().titulo,
@@ -155,7 +155,7 @@ function RecetaRow({category, id, classes}) {
     }
 
     const removeRecipy = (recipyID) => {
-        firebase.db.collection("recetas").doc(id).collection(category).doc(recipyID).delete();
+        firebase.db.collection("recetas").doc(id).collection("listaRecetas").doc(recipyID).delete();
     }
 
     return (

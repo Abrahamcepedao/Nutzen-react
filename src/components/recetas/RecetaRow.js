@@ -25,7 +25,7 @@ function RecetaRow({category, id, classes}) {
     classes = useStyles();
     
     useEffect(() => {
-        firebase.db.collection("recetas").doc(id).collection(category).onSnapshot(snapshot => {
+        firebase.db.collection("recetas").doc(id).collection("listaRecetas").onSnapshot(snapshot => {
             const rec = []; // recipes
             snapshot.docs.forEach(doc => {
                 const data = {
