@@ -5,7 +5,7 @@ import firebase from "../../database/firebase";
 
 //MaterialUI
 import { makeStyles, withStyles } from "@material-ui/core/styles";
-import { Button } from '@material-ui/core'
+import { Button, responsiveFontSizes } from '@material-ui/core'
 import Collapse from '@material-ui/core/Collapse';
 
 //MaterialUI - icons
@@ -125,11 +125,15 @@ function RecetaRow({category, id, classes}) {
 
     //respone
     const [response, setResponse] = useState([]);
+    const [edit, setEdit] = useState([]);
+
+    //
 
     useEffect(() => {
         firebase.db.collection("recetas").doc(id).collection("listaRecetas").onSnapshot(snapshot => {
             const rec = []; // recipes
             const res = []; // response
+            const ed = []; // edit
             snapshot.docs.forEach(doc => {
                 const data = {
                     titulo: doc.data().titulo,
@@ -141,10 +145,15 @@ function RecetaRow({category, id, classes}) {
                 const resData = {
                     state: false,
                 }
+                const editdata = {
+                    status: false,
+                }
                 res.push(resData);
+                ed.push(editdata);
             })
             setRecipes(rec);
             setResponse(res);
+            setEdit(ed);
         })
     },[])
 
@@ -152,6 +161,20 @@ function RecetaRow({category, id, classes}) {
         const data = [...response];
         data[index].state = !response[index].state;
         setResponse(data);
+
+        const otherData = [...edit];
+        otherData[index].status = false;
+        setEdit(otherData);
+    }
+
+    const handlEditChange = (index) => {
+        const data = [...edit];
+        data[index].status = !edit[index].status;
+        setEdit(data);
+
+        const otherData = [...response];
+        otherData[index].state = false;
+        setResponse(otherData);
     }
 
     const removeRecipy = (recipyID) => {
@@ -172,13 +195,36 @@ function RecetaRow({category, id, classes}) {
                         <div style={{flex: '1'}}>
                             <p className={classes.recipyTitle}>{recipy.titulo}</p>
                         </div>
+                        {/* Edit Icon */}
+                        <div>
+                            <CreateIcon onClick={() => handlEditChange(index)} className={classes.trashIcon}/>
+                        </div>
                         {/* TrashCan */}
                         <div>
                             <DeleteIcon onClick={() => handleChange(index)} className={classes.trashIcon}/>
                         </div>
                     </div>
 
-                    {/* Collapse */}
+                    {/* Edit recipe */}
+                    {edit.length != 0 && (
+                        <Collapse in={edit[index].status} >
+                                <h5>Edita la receta mamita</h5>
+                                <div className={classes.btnsContainer}>
+                                    <div>
+                                        <BlackButton onClick={() => handlEditChange(index)}>
+                                            Cancelar
+                                        </BlackButton>
+                                    </div>
+                                    <div>
+                                        <RedButton onClick={() => removeRecipy(recipy.id)}>
+                                            Eliminar
+                                        </RedButton>
+                                    </div>
+                                </div>
+                        </Collapse>
+                    )}
+
+                    {/* Delete recipe */}
                     {response.length != 0 && (
                         <Collapse in={response[index].state} >
                                 <h5>¿Estas segura de borrar la receta mamita?</h5>
