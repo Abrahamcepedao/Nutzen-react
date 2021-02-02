@@ -94,7 +94,10 @@ function Tiendas({classes}) {
     const [url, setUrl] = useState('');
     const [image, setImage] = useState(null);
     const [progress, setProgress] = useState(0);
+    
+    //Error and succes
     const [error, setError] = useState('');
+    const [succes, setSucces] = useState('');
 
     classes = useStyles();
     useEffect(() => {
@@ -110,8 +113,6 @@ function Tiendas({classes}) {
     };
 
     const handleUpload = () => {
-        console.log(image);
-        console.log(url);
         if(image && url){
             const uploadTask = firebase.storage.ref(`tiendas/${image.name}`).put(image);
             uploadTask.on(
@@ -146,7 +147,10 @@ function Tiendas({classes}) {
             )
             setImage(null);
             setUrl('')
+            setError('');
+            setSucces("Ya se agregó la tienda rouss");
         } else{
+            setSucces('');
             setError("Mamitaa agrega toda la info!");
         }
     }
@@ -165,6 +169,9 @@ function Tiendas({classes}) {
                         <BlackButton onClick={handleUpload}>
                             Agregar tienda
                         </BlackButton>
+                        {succes && (
+                            <p style={{fontWeight: 'bold'}}>{succes}</p>
+                        )}
                         {error && (
                             <p style={{fontWeight: 'bold'}}>{error}</p>
                         )}
