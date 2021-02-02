@@ -27,6 +27,10 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '12px',
         marginBottom: '50px'
     },
+    formLabel: {
+        textAlign: 'left',
+        fontWeight:'bold'
+    },
 }));
 
 
@@ -106,6 +110,8 @@ function Tiendas({classes}) {
     };
 
     const handleUpload = () => {
+        console.log(image);
+        console.log(url);
         if(image && url){
             const uploadTask = firebase.storage.ref(`tiendas/${image.name}`).put(image);
             uploadTask.on(
@@ -138,6 +144,8 @@ function Tiendas({classes}) {
                         });
                 }
             )
+            setImage(null);
+            setUrl('')
         } else{
             setError("Mamitaa agrega toda la info!");
         }
@@ -151,8 +159,9 @@ function Tiendas({classes}) {
                     <h1 style={{marginBottom: '100px', fontWeight: 'bold', color: TEXT_COLOR}}>Admin tiendas</h1>
                     <div className={classes.formContainer}>
                         <MyTextField variant="outlined" id="custom-css-outlined-input"  placeholder="Agregar url.." value={url} onChange={e => setUrl(e.target.value)}/>
-                        <progress style={{margin: 'auto', width: '100%', marginBottom: '20px'}} value={progress} max="100"/>
+                        <p className={classes.formLabel}>Selecciona una imagen doña rous</p>
                         <input style={{margin: 'auto', width: '100%', marginBottom: '20px', textAlign: 'center'}} type="file" onChange={handleImageChange}/>
+                        <progress style={{margin: 'auto', width: '100%', marginBottom: '20px'}} value={progress} max="100"/>
                         <BlackButton onClick={handleUpload}>
                             Agregar tienda
                         </BlackButton>

@@ -24,7 +24,6 @@ import Header from './Header';
 import RecetaRow from './RecetaRow';
 import CategoryRow from './CategoryRow';
 
-
 //Styles
 const useStyles = makeStyles((theme) => ({
     backgroundContainer: {
@@ -119,9 +118,6 @@ const MyTextField = withStyles({
     },
   },
 })(TextField);
-
-
-
 
 function Recetas({classes}) {
     classes = useStyles();
@@ -260,7 +256,7 @@ function Recetas({classes}) {
     const getCategoryID = (category) => {
         let categoryID = "";
         categories.map(cat => {
-            if(cat.titulo === category){
+            if(cat.displayTitle === category){
                 categoryID = cat.id;
             }
         })
@@ -310,7 +306,7 @@ function Recetas({classes}) {
                 notes.splice(index, 1);
             }
         })
-        if(steps.length === 0){
+        if(notes.length === 0){
             return false;
         }
 
@@ -494,7 +490,7 @@ function Recetas({classes}) {
                     <FormGroup>
                         {categories && categories.map((category) => (
                             <FormControlLabel
-                                control={<Checkbox color="default" icon={<CheckBoxOutlineBlankIcon/>} checkedIcon={<CheckBoxIcon/>} onChange={checkBoxChange} name={category.titulo} />}
+                                control={<Checkbox color="default" icon={<CheckBoxOutlineBlankIcon/>} checkedIcon={<CheckBoxIcon/>} onChange={checkBoxChange} name={category.displayTitle} />}
                                 label={category.displayTitle}
                             />
                         ))}

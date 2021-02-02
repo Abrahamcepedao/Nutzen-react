@@ -5,7 +5,7 @@ import firebase from "../../database/firebase";
 
 //MaterialUI
 import { makeStyles, withStyles } from "@material-ui/core/styles";
-import { Button, responsiveFontSizes } from '@material-ui/core'
+import { Button, TextField, FormControl } from '@material-ui/core'
 import Collapse from '@material-ui/core/Collapse';
 
 //MaterialUI - icons
@@ -13,7 +13,14 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import CreateIcon from '@material-ui/icons/Create';
 
 //Colors
-import { PRIMARY, BLACK_BUTTON_PRIMARY, BLACK_BUTTON_SECONDARY, RED_BUTTON_PRIMARY, RED_BUTTON_SECONDARY } from "../../resources/Colors";
+import { PRIMARY,  
+        BLACK_BUTTON_PRIMARY, 
+        BLACK_BUTTON_SECONDARY, 
+        RED_BUTTON_PRIMARY, 
+        RED_BUTTON_SECONDARY, 
+        GREEN_BUTTON_PRIMARY,
+        GREEN_BUTTON_SECONDARY  
+} from "../../resources/Colors";
 
 const useStyles = makeStyles((theme) => ({
   recipyContainer: {
@@ -117,6 +124,60 @@ const RedButton = withStyles((theme) => ({
   },
 }))(Button);
 
+const GreenButton = withStyles((theme) => ({
+  root: {
+    color: 'white',
+    backgroundColor: GREEN_BUTTON_PRIMARY,
+    borderRadius: "100px",
+    transition: "transform 450ms",
+    fontWeight: "bolder",
+    padding: "10px 20px",
+    margin: 'auto',
+    marginBottom: '20px',
+    width: '80%',
+    '&:hover': {
+      backgroundColor: GREEN_BUTTON_SECONDARY,
+      transform: "scale(1.08)",
+    },
+    '&:active': {
+      boxShadow: 'none',
+      backgroundColor: GREEN_BUTTON_SECONDARY,
+      border: 'none',
+    },
+    '&:focus': {
+      backgroundColor: GREEN_BUTTON_SECONDARY,
+    },
+    '&:disabled': {
+        opacity: '0.7',
+        color: 'black'
+    }
+  },
+}))(Button);
+
+const MyTextField = withStyles({
+  root: {
+    marginBottom: '20px',
+    width: '100%',
+    '& label.Mui-focused': {
+      color: 'black',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: 'black',
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: 'black',
+      },
+      '&:hover fieldset': {
+        borderColor: 'black',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: 'black'
+      },
+    },
+  },
+})(TextField);
+
 function RecetaRow({category, id, classes}) {
     classes = useStyles();
 
@@ -127,7 +188,13 @@ function RecetaRow({category, id, classes}) {
     const [response, setResponse] = useState([]);
     const [edit, setEdit] = useState([]);
 
-    //
+    //new recipy info
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+
+    //error and succes
+    const [editError, setEditError] = useState('');
+    const [editSuccess, setEditSuccess] = useState('');
 
     useEffect(() => {
         firebase.db.collection("recetas").doc(id).collection("listaRecetas").onSnapshot(snapshot => {
@@ -181,6 +248,23 @@ function RecetaRow({category, id, classes}) {
         firebase.db.collection("recetas").doc(id).collection("listaRecetas").doc(recipyID).delete();
     }
 
+    const updateRecipy = (recipyID) => {
+        if(title && description){
+            firebase.db.collection("recetas").doc(id).collection("listaRecetas").doc(recipyID).set({
+                titulo: title,
+                descripcion: description
+            },{
+                merge: true,
+            });
+            setTitle('');
+            setDescription('');
+            setEditSuccess("Ya se actualizó rouss");
+        } else{
+            setEditError("Llena todos los datos mamita")
+        }
+        
+    }
+
     return (
         <div>
             <p style={{fontWeight: "bold",  textAlign: "left"}}>{category}</p>
@@ -188,7 +272,7 @@ function RecetaRow({category, id, classes}) {
                 <div className={classes.recipyContainer} key={recipy.id}>
 
                     {/* Recipy data */}
-                    <div  className={classes.recipyInnerContainer} style={{marginBottom: response.length != 0 && response[index].state && "20px"}}>
+                    <div  className={classes.recipyInnerContainer}>
                         {/* image */}
                         <div className={classes.image} style={{backgroundImage: `url(${recipy.image})`}}></div>
                         {/* Title */}
@@ -209,6 +293,22 @@ function RecetaRow({category, id, classes}) {
                     {edit.length != 0 && (
                         <Collapse in={edit[index].status} >
                                 <h5>Edita la receta mamita</h5>
+                                <FormControl style={{width: '90%'}}>
+                                    <MyTextField 
+                                        variant="outlined"
+                                        id="custom-css-outlined-input"
+                                        placeholder="Ingresa nuevo título mamitaa"
+                                        value={title}
+                                        onChange={(event) => setTitle(event.target.value)}
+                                    />
+                                    <MyTextField 
+                                        variant="outlined"
+                                        id="custom-css-outlined-input"
+                                        placeholder="Ingresa nuevo descripción mamitaa"
+                                        value={description}
+                                        onChange={(event) => setDescription(event.target.value)}
+                                    />
+                                </FormControl>
                                 <div className={classes.btnsContainer}>
                                     <div>
                                         <BlackButton onClick={() => handlEditChange(index)}>
@@ -216,11 +316,17 @@ function RecetaRow({category, id, classes}) {
                                         </BlackButton>
                                     </div>
                                     <div>
-                                        <RedButton onClick={() => removeRecipy(recipy.id)}>
-                                            Eliminar
-                                        </RedButton>
+                                        <GreenButton onClick={() => updateRecipy(recipy.id)}>
+                                            Actualizar
+                                        </GreenButton>
                                     </div>
                                 </div>
+                                {editSuccess && (
+                                    <h4 style={{fontWeight: 'bold'}}>{editSuccess}</h4>
+                                )}
+                                {editError && (
+                                    <h4 style={{fontWeight: 'bold'}}>{editError}</h4>
+                                )}
                         </Collapse>
                     )}
 

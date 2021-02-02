@@ -204,6 +204,8 @@ function CategoryRow({category, id, classes}) {
     const updateCategory = () => {
         firebase.db.collection("recetas").doc(id).set({
             displayTitle: newCategory
+        },{
+          merge: true
         })
     }
 
