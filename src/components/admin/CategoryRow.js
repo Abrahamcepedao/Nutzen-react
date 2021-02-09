@@ -181,7 +181,7 @@ const MyTextField = withStyles({
 function CategoryRow({category, id, classes}) {
     classes = useStyles();
     //categories
-    const [newCategory, setNewCategory] = useState('');
+    const [newCategory, setNewCategory] = useState(category);
 
     //collapse
     const [response, setResponse] = useState(false);
