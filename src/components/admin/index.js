@@ -108,15 +108,15 @@ function Index({classes}) {
                         </Col> */}
                         <Col sm={6} xl={4}>
                           <Link to="/admin/tiendas" className={classes.itemLink}>
-                              <div className={classes.item} style={{backgroundImage: 'url(./img/admin/store.png)'}}>
-                                   <div className={classes.itemOverlay}>
-                                    <div className={classes.itemWrapper}>
-                                      <h3>Tiendas</h3>
-                                      <StorefrontIcon className={classes.itemIcon}/>
-                                    </div>
-                                </div>
+                            <div className={classes.item} style={{backgroundImage: 'url(./img/admin/store.png)'}}>
+                                  <div className={classes.itemOverlay}>
+                                  <div className={classes.itemWrapper}>
+                                    <h3>Tiendas</h3>
+                                    <StorefrontIcon className={classes.itemIcon}/>
+                                  </div>
                               </div>
-                            </Link>
+                            </div>
+                          </Link>
                         </Col>
                         <Col sm={6} xl={4}>
                           <Link to="/admin/frase" className={classes.itemLink}>
