@@ -91,6 +91,7 @@ function Frase({classes}) {
     const [newPhrase, setNewPhrase] = useState('');
     const [phraseID, setPhraseID] = useState('');
     const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
     classes = useStyles();
 
     useEffect(() => {
@@ -108,7 +109,10 @@ function Frase({classes}) {
                 frase: newPhrase
             })
             setPhrase(newPhrase);
+            setError('');
+            setSuccess('Ya se cambio la frase mamitaa');
         } else{
+            setSuccess('');
             setError('Mamitaa ponga una frase no sea floja JAJAJ');
         }
         
@@ -126,6 +130,9 @@ function Frase({classes}) {
                         <BlackButton onClick={handlePhraseChange}>
                             Cambiar frase
                         </BlackButton>
+                        {success && (
+                            <p style={{fontWeight: 'bold'}}>{success}</p>
+                        )}
                         {error && (
                             <p style={{fontWeight: 'bold'}}>{error}</p>
                         )}
