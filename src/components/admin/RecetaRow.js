@@ -205,6 +205,7 @@ function RecetaRow({category, id, classes}) {
                 const data = {
                     titulo: doc.data().titulo,
                     image: doc.data().image,
+                    description: doc.data().descripcion,
                     id: doc.id
                 }
                 rec.push(data);
@@ -217,6 +218,11 @@ function RecetaRow({category, id, classes}) {
                 }
                 res.push(resData);
                 ed.push(editdata);
+
+                //set title
+                setTitle(data.titulo);
+                //set descripcion
+                setDescription(data.description);
             })
             setRecipes(rec);
             setResponse(res);
