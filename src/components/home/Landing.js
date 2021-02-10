@@ -135,7 +135,10 @@ function Landing({classes}) {
                     </div>
                 </div>
 
-                {/*  */}
+                {/* Frase */}
+                <div className={classes.phraseContainer}>
+                    <h1>Peanut butter</h1>
+                </div>
                 
             </div>
         </div>
