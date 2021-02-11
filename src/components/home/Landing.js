@@ -11,7 +11,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const useStyles = makeStyles((theme) =>({
     backgroundContainer: {
         width: '100vw',
-        minHeight: '100vh',
+        height: '100vh',
+        minHeight: '800px',
         background: 'red',
         backgroundImage: "url(./img/admin/recetas.png)",
         backgroundSize: 'cover',
@@ -68,6 +69,15 @@ const useStyles = makeStyles((theme) =>({
     },
     menuItemText: {
         fontWeight: 'bold'
+    },
+    phraseContainer: {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)'
+    },
+    phraseTitle: {
+        color: 'white'
     }
 }));
 
@@ -137,7 +147,7 @@ function Landing({classes}) {
 
                 {/* Frase */}
                 <div className={classes.phraseContainer}>
-                    <h1>Peanut butter</h1>
+                    <h1 className={classes.phraseTitle}>Peanut butter</h1>
                 </div>
                 
             </div>
