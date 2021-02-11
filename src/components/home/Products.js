@@ -6,7 +6,15 @@ import ProductImage from './products/ProductImage';
 import ProductInfo from './products/ProductInfo';
 
 const useStyles = makeStyles((theme) =>({
-    
+    backgroundContainer: {
+        padding: '50px'
+    },
+    title: {
+        textAlign: 'center'
+    },
+    productRow: {
+        padding: '50px'
+    }
 }));
 
 
@@ -15,24 +23,31 @@ function Products({classes}) {
 
     return (
         <div className={classes.backgroundContainer}>
-            <h1>Products</h1>
-            <Row>
+            <h1 className={classes.title}>Products</h1>
+            <Row className={classes.productRow}>
                 <Col md={6}>
-                    <ProductImage/>
+                    <ProductImage type="natural"/>
                 </Col>
                 <Col md={6}>
                     <ProductInfo/>
                 </Col>
             </Row>
-            <Row>
+            <Row className={classes.productRow}>
                 <Col md={6}>
                     <ProductInfo/>
                 </Col>
                 <Col md={6}>
-                    <ProductImage/>
+                    <ProductImage type="matcha"/>
                 </Col>
             </Row>
-            
+            <Row className={classes.productRow}>
+                <Col md={6}>
+                    <ProductImage type="azucar"/>
+                </Col>
+                <Col md={6}>
+                    <ProductInfo/>
+                </Col>
+            </Row>
         </div>
     )
 }

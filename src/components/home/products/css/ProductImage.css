@@ -1,0 +1,9 @@
+.slick-arrow::before {
+  position: relative;
+  color: black !important;
+  font-size: 30px;
+  left: -3px;
+}
+.slick-arrow::before:hover {
+    font-size: 50px;
+}
