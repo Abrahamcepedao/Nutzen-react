@@ -5,23 +5,50 @@ import { Link } from 'react-router-dom';
 import { useDataLayerValue } from "../../ContextAPI/DataLayer";
 
 const useStyles = makeStyles((theme) => ({
+  recipesContainer: {
+    display: 'flex',
+    overflowX: 'scroll',
+    overflowY: 'visible'
+  },
   recipeContainer: {
-      width: "200px",
-      height: "200px",
+      width: "300px",
+      height: "450px",
       backgroundRepeat: "no-repeat",
       backgroundSize: "cover",
       backgroundPosition: "center",
       transition: "transform 450ms",
+      borderRadius: '10px',
+      marginRight: '20px',
       '&:hover': {
-          transform: "scale(1.08)"
+          transform: "scale(1.04)"
+      },
+      //boxShadow: '0 5px 10px rgb(25 25 25 / 25%), 0 10px 10px rgb(25 25 25 / 25%)'
+  },
+  recipyOverlay: {
+    width: '300px',
+    height: '450px',
+    borderRadius: '10px',
+    backgroundImage: 'linear-gradient(to bottom, rgba(0,0,0,0)0%, rgb(0,0,0,0.8)100%)'
+  },
+  recipyLink: {
+    '&:hover': {
+          textDecoration: 'none !important'
       }
+  },
+  recipyTitle: {
+      position: 'relative',
+      top: '415px',
+      left: '10px',
+      color: 'white',
+      fontWeight: 'bold',
+      
   }
 }));
 
 
 function RecetaRow({category, id, classes}) {
     const [recipes, setRecipes] = useState([]);
-    const [{categoryId, categoryTitle, recipyId}, dispatch] = useDataLayerValue();
+    const [{},dispatch] = useDataLayerValue();
     classes = useStyles();
     
     useEffect(() => {
@@ -55,17 +82,178 @@ function RecetaRow({category, id, classes}) {
         })
     }
 
+    const calculateLength = (title) => {
+        return (450 - 32 * (Math.floor(title.length / 20)+1))
+    }
+
     return (
-        <div>
-            <h2 style={{color: "black",  textAlign: "left"}}>{category}</h2>
-            <div>
+        <div style={{marginBottom: '50px'}}>
+            <h2 style={{color: "black",  textAlign: "left", fontWeight: 'bold'}}>{category}</h2>
+            <div className={classes.recipesContainer}>
                 {recipes && recipes.map((recipy) => (
-                    <Link to="/receta-post" onClick={() => setRecipy(recipy.id)}>
+                    <Link to="/receta-post" className={classes.recipyLink} onClick={() => setRecipy(recipy.id)}>
                         <div 
                             className={classes.recipeContainer}
                             style={{backgroundImage: `url(${recipy.image})`}}
                             >
-                            <h2>{recipy.titulo}</h2>
+                                <div className={classes.recipyOverlay}>
+                                    <h4 className={classes.recipyTitle} style={{top: calculateLength(recipy.titulo)}}>{recipy.titulo}</h4>
+                                </div>
+                            
+                        </div>
+                    </Link>
+                    
+                ))}
+                {recipes && recipes.map((recipy) => (
+                    <Link to="/receta-post" className={classes.recipyLink} onClick={() => setRecipy(recipy.id)}>
+                        <div 
+                            className={classes.recipeContainer}
+                            style={{backgroundImage: `url(${recipy.image})`}}
+                            >
+                                <div className={classes.recipyOverlay}>
+                                    <h4 className={classes.recipyTitle} style={{top: calculateLength(recipy.titulo)}}>{recipy.titulo}</h4>
+                                </div>
+                            
+                        </div>
+                    </Link>
+                    
+                ))}
+                {recipes && recipes.map((recipy) => (
+                    <Link to="/receta-post" className={classes.recipyLink} onClick={() => setRecipy(recipy.id)}>
+                        <div 
+                            className={classes.recipeContainer}
+                            style={{backgroundImage: `url(${recipy.image})`}}
+                            >
+                                <div className={classes.recipyOverlay}>
+                                    <h4 className={classes.recipyTitle} style={{top: calculateLength(recipy.titulo)}}>{recipy.titulo}</h4>
+                                </div>
+                            
+                        </div>
+                    </Link>
+                    
+                ))}
+                {recipes && recipes.map((recipy) => (
+                    <Link to="/receta-post" className={classes.recipyLink} onClick={() => setRecipy(recipy.id)}>
+                        <div 
+                            className={classes.recipeContainer}
+                            style={{backgroundImage: `url(${recipy.image})`}}
+                            >
+                                <div className={classes.recipyOverlay}>
+                                    <h4 className={classes.recipyTitle} style={{top: calculateLength(recipy.titulo)}}>{recipy.titulo}</h4>
+                                </div>
+                            
+                        </div>
+                    </Link>
+                    
+                ))}
+                {recipes && recipes.map((recipy) => (
+                    <Link to="/receta-post" className={classes.recipyLink} onClick={() => setRecipy(recipy.id)}>
+                        <div 
+                            className={classes.recipeContainer}
+                            style={{backgroundImage: `url(${recipy.image})`}}
+                            >
+                                <div className={classes.recipyOverlay}>
+                                    <h4 className={classes.recipyTitle} style={{top: calculateLength(recipy.titulo)}}>{recipy.titulo}</h4>
+                                </div>
+                            
+                        </div>
+                    </Link>
+                    
+                ))}
+                {recipes && recipes.map((recipy) => (
+                    <Link to="/receta-post" className={classes.recipyLink} onClick={() => setRecipy(recipy.id)}>
+                        <div 
+                            className={classes.recipeContainer}
+                            style={{backgroundImage: `url(${recipy.image})`}}
+                            >
+                                <div className={classes.recipyOverlay}>
+                                    <h4 className={classes.recipyTitle} style={{top: calculateLength(recipy.titulo)}}>{recipy.titulo}</h4>
+                                </div>
+                            
+                        </div>
+                    </Link>
+                    
+                ))}
+                {recipes && recipes.map((recipy) => (
+                    <Link to="/receta-post" className={classes.recipyLink} onClick={() => setRecipy(recipy.id)}>
+                        <div 
+                            className={classes.recipeContainer}
+                            style={{backgroundImage: `url(${recipy.image})`}}
+                            >
+                                <div className={classes.recipyOverlay}>
+                                    <h4 className={classes.recipyTitle} style={{top: calculateLength(recipy.titulo)}}>{recipy.titulo}</h4>
+                                </div>
+                            
+                        </div>
+                    </Link>
+                    
+                ))}
+                {recipes && recipes.map((recipy) => (
+                    <Link to="/receta-post" className={classes.recipyLink} onClick={() => setRecipy(recipy.id)}>
+                        <div 
+                            className={classes.recipeContainer}
+                            style={{backgroundImage: `url(${recipy.image})`}}
+                            >
+                                <div className={classes.recipyOverlay}>
+                                    <h4 className={classes.recipyTitle} style={{top: calculateLength(recipy.titulo)}}>{recipy.titulo}</h4>
+                                </div>
+                            
+                        </div>
+                    </Link>
+                    
+                ))}
+                {recipes && recipes.map((recipy) => (
+                    <Link to="/receta-post" className={classes.recipyLink} onClick={() => setRecipy(recipy.id)}>
+                        <div 
+                            className={classes.recipeContainer}
+                            style={{backgroundImage: `url(${recipy.image})`}}
+                            >
+                                <div className={classes.recipyOverlay}>
+                                    <h4 className={classes.recipyTitle} style={{top: calculateLength(recipy.titulo)}}>{recipy.titulo}</h4>
+                                </div>
+                            
+                        </div>
+                    </Link>
+                    
+                ))}
+                {recipes && recipes.map((recipy) => (
+                    <Link to="/receta-post" className={classes.recipyLink} onClick={() => setRecipy(recipy.id)}>
+                        <div 
+                            className={classes.recipeContainer}
+                            style={{backgroundImage: `url(${recipy.image})`}}
+                            >
+                                <div className={classes.recipyOverlay}>
+                                    <h4 className={classes.recipyTitle} style={{top: calculateLength(recipy.titulo)}}>{recipy.titulo}</h4>
+                                </div>
+                            
+                        </div>
+                    </Link>
+                    
+                ))}
+                {recipes && recipes.map((recipy) => (
+                    <Link to="/receta-post" className={classes.recipyLink} onClick={() => setRecipy(recipy.id)}>
+                        <div 
+                            className={classes.recipeContainer}
+                            style={{backgroundImage: `url(${recipy.image})`}}
+                            >
+                                <div className={classes.recipyOverlay}>
+                                    <h4 className={classes.recipyTitle} style={{top: calculateLength(recipy.titulo)}}>{recipy.titulo}</h4>
+                                </div>
+                            
+                        </div>
+                    </Link>
+                    
+                ))}
+                {recipes && recipes.map((recipy) => (
+                    <Link to="/receta-post" className={classes.recipyLink} onClick={() => setRecipy(recipy.id)}>
+                        <div 
+                            className={classes.recipeContainer}
+                            style={{backgroundImage: `url(${recipy.image})`}}
+                            >
+                                <div className={classes.recipyOverlay}>
+                                    <h4 className={classes.recipyTitle} style={{top: calculateLength(recipy.titulo)}}>{recipy.titulo}</h4>
+                                </div>
+                            
                         </div>
                     </Link>
                     
