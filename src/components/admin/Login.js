@@ -3,7 +3,7 @@ import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { Button, FormControl, TextField } from '@material-ui/core';
 import { useDataLayerValue } from "../../ContextAPI/DataLayer";
 import { Redirect } from 'react-router-dom';
-import { PRIMARY, TEXT_COLOR, BLACK_BUTTON_PRIMARY, BLACK_BUTTON_SECONDARY } from "../../resources/Colors";
+import { PRIMARY, BLACK_BUTTON_PRIMARY, BLACK_BUTTON_SECONDARY } from "../../resources/Colors";
 
 const useStyles = makeStyles((theme) => ({
     backgroundContainer: {

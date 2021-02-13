@@ -296,7 +296,7 @@ function RecetaRow({category, id, classes}) {
                     </div>
 
                     {/* Edit recipe */}
-                    {edit.length != 0 && (
+                    {edit.length !== 0 && (
                         <Collapse in={edit[index].status} >
                                 <h5>Edita la receta mamita</h5>
                                 <FormControl style={{width: '90%'}}>
@@ -337,7 +337,7 @@ function RecetaRow({category, id, classes}) {
                     )}
 
                     {/* Delete recipe */}
-                    {response.length != 0 && (
+                    {response.length !== 0 && (
                         <Collapse in={response[index].state} >
                                 <h5>¿Estas segura de borrar la receta mamita?</h5>
                                 <div className={classes.btnsContainer}>

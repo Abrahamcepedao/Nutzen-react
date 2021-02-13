@@ -1,9 +1,27 @@
 import React, { useState, useEffect } from 'react';
+import { makeStyles } from "@material-ui/core/styles";
 import firebase from '../../database/firebase';
+import { Col, Row } from 'react-bootstrap';
 
-function Stores() {
+const useStyles = makeStyles((theme) =>({
+    title: {
+        textAlign: 'center',
+        marginBottom: '100px '
+    },
+    logoImg: {
+        width: '60%',
+        margin: 'auto'
+    },
+    logoContainer: {
+        textAlign: 'center',
+        marginBottom: '50px'
+    }
+}));
+
+
+function Stores({classes}) {
     const [stores, setStores] = useState([]);
-
+    classes = useStyles();
     useEffect(() => {
         firebase.db.collection("tiendas").onSnapshot(snapshot => {
             const strs = []; //store
@@ -26,16 +44,22 @@ function Stores() {
 
     return (
         <div id={"tiendas"}>
-            <h1>¿Dónde nos encontramos?</h1>
-            {stores && stores.map(store => (
-                <div>
-                    <img src={store.image} onClick={() => {
-                        openInNewTab(
-                          store.url
-                        );
-                      }}/>
-                </div>
-            ))}
+            <h1 className={classes.title}>¿Dónde nos encontramos?</h1>
+            <Row>
+                {stores && stores.map(store => (
+                    <Col sm={6} lg={3}>
+                    
+                        <div className={classes.logoContainer}>
+                            <img className={classes.logoImg} src={store.image} onClick={() => {
+                                openInNewTab(
+                                store.url
+                                );
+                            }}/>
+                        </div>
+                    </Col>
+                ))}
+            </Row>
+            
         </div>
     )
 }

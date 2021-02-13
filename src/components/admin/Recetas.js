@@ -123,7 +123,7 @@ function Recetas({classes}) {
     classes = useStyles();
     
     //data layer
-    const [{user}, dispatch] = useDataLayerValue();
+    const [{user}] = useDataLayerValue();
 
     //recipy info
     const [title, setTitle] = useState('');
@@ -242,7 +242,7 @@ function Recetas({classes}) {
     }
 
     const checkBoxChange = (event) => {
-        if(event.target.checked  && selectedCategories.indexOf(event.target.name) == -1){
+        if(event.target.checked  && selectedCategories.indexOf(event.target.name) === -1){
             const data = selectedCategories;
             data.push(event.target.name);
             setSelectedCategories(data);
