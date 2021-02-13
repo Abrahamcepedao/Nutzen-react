@@ -16,8 +16,10 @@ function RecetaPost({classes}) {
     const [steps, setSteps] = useState([]);
     const [notes, setNotes] = useState([]);
     
-    const [{categoryId, categoryTitle, recipyId}, dispatch] = useDataLayerValue();
+    const [{categoryId, categoryTitle, recipyId}] = useDataLayerValue();
     
+    classes = useStyles();
+
     useEffect(() => {
         console.log(categoryId);
         console.log(categoryTitle);
@@ -72,7 +74,7 @@ function RecetaPost({classes}) {
 
         
 
-    }, [])
+    }, [categoryId, categoryTitle, recipyId])
 
     if(!categoryId){ return (<Redirect to="/recetas"/>) }
 
@@ -81,7 +83,7 @@ function RecetaPost({classes}) {
             <h1>Receta posts</h1>
             <h2>{title}</h2>
             <p>{description}</p>
-            <img src={image}/>
+            <img alt="recetaImage" src={image}/>
             <p>Ingredientes</p>
             <ul>
                 {ingredients && ingredients.map(item => (

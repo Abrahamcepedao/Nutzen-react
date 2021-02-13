@@ -38,7 +38,7 @@ function RecetaRow({category, id, classes}) {
             console.log("recipes", rec);
             setRecipes(rec);
         })
-    },[])
+    },[id])
 
     const setRecipy = (recipyId) => {
         dispatch({

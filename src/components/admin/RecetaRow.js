@@ -228,7 +228,7 @@ function RecetaRow({category, id, classes}) {
             setResponse(res);
             setEdit(ed);
         })
-    },[])
+    },[id])
 
     const handleChange = (index) => {
         const data = [...response];

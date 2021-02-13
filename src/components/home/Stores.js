@@ -69,7 +69,7 @@ function Stores({classes}) {
                     <Col sm={6} lg={3}>
                     
                         <div className={classes.logoContainer}>
-                            <img className={classes.logoImg} src={store.image} onClick={() => {
+                            <img alt="Logo tienda" className={classes.logoImg} src={store.image} onClick={() => {
                                 openInNewTab(
                                 store.url
                                 );

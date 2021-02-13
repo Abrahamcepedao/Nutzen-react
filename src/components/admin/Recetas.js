@@ -223,7 +223,7 @@ function Recetas({classes}) {
     const addCategory = (event) => {
         event.preventDefault();
         var val = true;
-        categories.map(cat => {
+        categories.forEach(cat => {
             if(cat.titulo === newCategory){
                 val = false;
             }
@@ -255,7 +255,7 @@ function Recetas({classes}) {
 
     const getCategoryID = (category) => {
         let categoryID = "";
-        categories.map(cat => {
+        categories.forEach(cat => {
             if(cat.displayTitle === category){
                 categoryID = cat.id;
             }
@@ -281,7 +281,7 @@ function Recetas({classes}) {
         }
 
         /* <--ingredients--> */
-        ingredients.map((ing, index) => {
+        ingredients.forEach((ing, index) => {
             if(ing === ""){
                 ingredients.splice(index, 1);
             }
@@ -291,7 +291,7 @@ function Recetas({classes}) {
         }
 
         /* <--steps--> */
-        steps.map((step, index) => {
+        steps.forEach((step, index) => {
             if(step === ""){
                 steps.splice(index, 1);
             }
@@ -301,7 +301,7 @@ function Recetas({classes}) {
         }
 
         /* <--notes--> */
-        notes.map((note, index) => {
+        notes.forEach((note, index) => {
             if(note === ""){
                 notes.splice(index, 1);
             }
@@ -515,7 +515,7 @@ function Recetas({classes}) {
                 <h3 style={{fontWeight: 'bold', marginBottom: '50px'}}>Borra recetas rouss</h3>
                 <div>
                     {categories && categories.map((category) => (
-                        <RecetaRow category={category.displayTitle} id={category.id}/>
+                        <RecetaRow key={category.id} category={category.displayTitle} id={category.id}/>
                     ))}
                 </div>
             </div>
@@ -525,7 +525,7 @@ function Recetas({classes}) {
                 <h3 style={{fontWeight: 'bold', marginBottom: '50px'}}>Borra categorías rouss</h3>
                 <div>
                     {categories && categories.map((category) => (
-                        <CategoryRow category={category.displayTitle} id={category.id}/>
+                        <CategoryRow key={category.id} category={category.displayTitle} id={category.id}/>
                     ))}
                 </div>
             </div>

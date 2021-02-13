@@ -64,13 +64,13 @@ export default function ProductImage({classes, type}) {
     return (
             <Slider {...settings}>
                 <div className={classes.slideContainer}>
-                    <img className={classes.slideImage} src={`./img/home/products/${type}/photo1.png`}/>
+                    <img alt="product" className={classes.slideImage} src={`./img/home/products/${type}/photo1.png`}/>
                 </div>
                 <div>
-                    <img className={classes.slideImage} src={`./img/home/products/${type}/photo2.png`}/>
+                    <img alt="product" className={classes.slideImage} src={`./img/home/products/${type}/photo2.png`}/>
                 </div>
                 <div>
-                    <img className={classes.slideImage} src={`./img/home/products/${type}/photo3.png`}/>
+                    <img alt="product" className={classes.slideImage} src={`./img/home/products/${type}/photo3.png`}/>
                 </div>
             </Slider>
     )

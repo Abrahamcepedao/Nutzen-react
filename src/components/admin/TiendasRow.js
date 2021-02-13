@@ -133,7 +133,7 @@ function TiendaRow({tiendaImg, id, classes}) {
                 <div  className={classes.recipyInnerContainer} style={{marginBottom: response && "20px"}}>
                     {/* Title */}
                     <div  style={{flex: '1', textAlign: 'left'}}>
-                        <img style={{width: '50px'}} src={tiendaImg}/>
+                        <img alt="tienda" style={{width: '50px'}} src={tiendaImg}/>
                     </div>
                     {/* TrashCan Icon */}
                     <div>

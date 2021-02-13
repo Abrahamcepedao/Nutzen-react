@@ -1,9 +1,5 @@
 import React from 'react';
 
-//Link
-import { Link } from "react-router-dom";
-import { HashLink } from 'react-router-hash-link';
-
 //MaterialUI
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
@@ -81,7 +77,7 @@ function Footer({classes}) {
         <div className={classes.backgroundContainer}>
             <Row>
                 <Col sm={6} md={3} className={classes.infoContainer}>
-                    <img className={classes.logoImg} src="./img/home/landing/logo.png"/>
+                    <img alt="Nutzen" className={classes.logoImg} src="./img/home/landing/logo.png"/>
                 </Col>
                 <Col sm={6} md={3} className={classes.infoContainer}>
                     <p><PhoneIphoneIcon/> (999) 908 8092</p>
