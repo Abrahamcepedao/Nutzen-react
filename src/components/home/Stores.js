@@ -7,9 +7,14 @@ import { Col, Row } from 'react-bootstrap';
 import { PRIMARY } from "../../resources/Colors";
 
 const useStyles = makeStyles((theme) =>({
+    backgroundContainer: {
+        paddingTop: '50px',
+        paddingBottom: '20px'
+    },
     title: {
         textAlign: 'center',
-        marginBottom: '100px '
+        marginBottom: '100px ',
+        fontWeight: 'bold'
     },
     logosContainer: {
         width: '100%',
@@ -57,7 +62,7 @@ function Stores({classes}) {
     };
 
     return (
-        <div id={"tiendas"}>
+        <div id={"tiendas"} className={classes.backgroundContainer}>
             <h1 className={classes.title}>¿Dónde nos encontramos?</h1>
             <Row className={classes.logosContainer}>
                 {stores && stores.map(store => (
