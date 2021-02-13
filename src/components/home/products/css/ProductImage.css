@@ -1,6 +1,6 @@
 .slick-arrow::before {
   position: relative;
-  color: black !important;
+  color: white !important;
   font-size: 30px;
   left: -3px;
 }

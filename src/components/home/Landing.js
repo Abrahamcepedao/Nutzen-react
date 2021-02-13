@@ -4,6 +4,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 import { HashLink } from 'react-router-hash-link';
 import HomeIcon from "@material-ui/icons/Home";
+import StorefrontIcon from '@material-ui/icons/Storefront';
+import LocalGroceryStoreIcon from '@material-ui/icons/LocalGroceryStore';
+import MenuBookIcon from '@material-ui/icons/MenuBook';
+import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -103,36 +107,36 @@ function Landing({classes}) {
                                 </Link>
                             </div>
                             <div className={classes.menuItem}>
-                                <Link to="/" className={classes.menuItemLink}>
+                                <HashLink to="/#productos" smooth className={classes.menuItemLink}>
                                     <div className={classes.menuItemContainer}>
-                                        <HomeIcon />
+                                        <LocalGroceryStoreIcon />
                                         <p className={classes.menuItemText}>Productos</p>
                                     </div>
-                                </Link>
+                                </HashLink>
                             </div>
                             <div className={classes.menuItem}>
-                                <Link to="/" className={classes.menuItemLink}>
+                                <HashLink to="/#tiendas" smooth className={classes.menuItemLink}>
                                     <div className={classes.menuItemContainer}>
-                                        <HomeIcon />
+                                        <StorefrontIcon />
                                         <p className={classes.menuItemText}>Tiendas</p>
                                     </div>
-                                </Link>
+                                </HashLink>
                             </div>
                             <div className={classes.menuItem}>
-                                <Link to="/" className={classes.menuItemLink}>
+                                <Link to="/recetas" className={classes.menuItemLink}>
                                     <div className={classes.menuItemContainer}>
-                                        <HomeIcon />
+                                        <MenuBookIcon />
                                         <p className={classes.menuItemText}>Recetas</p>
                                     </div>
                                 </Link>
                             </div>
                             <div className={classes.menuItem}>
-                                <Link to="/" className={classes.menuItemLink}>
+                                <HashLink to="/#contacto" smooth className={classes.menuItemLink}>
                                     <div className={classes.menuItemContainer}>
-                                        <HomeIcon />
+                                        <PhoneIphoneIcon />
                                         <p className={classes.menuItemText}>Contacto</p>
                                     </div>
-                                </Link>
+                                </HashLink>
                             </div>
                             <div className={classes.menuItem}>
                                 <div className={classes.menuItemContainerSocial}>

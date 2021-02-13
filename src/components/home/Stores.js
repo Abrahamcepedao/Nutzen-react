@@ -25,7 +25,8 @@ function Stores() {
     };
 
     return (
-        <div>
+        <div id={"tiendas"}>
+            <h1>¿Dónde nos encontramos?</h1>
             {stores && stores.map(store => (
                 <div>
                     <img src={store.image} onClick={() => {
