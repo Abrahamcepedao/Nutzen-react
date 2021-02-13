@@ -6,6 +6,7 @@ import firebase from '../../database/firebase';
 import Header from './Header';
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { PRIMARY, TEXT_COLOR, BLACK_BUTTON_PRIMARY, BLACK_BUTTON_SECONDARY } from "../../resources/Colors";
+import TiendaRow from './TiendasRow';
 
 const useStyles = makeStyles((theme) => ({
     backgroundContainer: {
@@ -91,17 +92,33 @@ const MyTextField = withStyles({
 
 function Tiendas({classes}) {
     const [{user}] = useDataLayerValue();
+
+    //new image
     const [url, setUrl] = useState('');
     const [image, setImage] = useState(null);
     const [progress, setProgress] = useState(0);
     
+    //array images
+    const [stores, setStores] = useState([]);
+
     //Error and succes
     const [error, setError] = useState('');
     const [succes, setSucces] = useState('');
 
     classes = useStyles();
     useEffect(() => {
-
+        firebase.db.collection("tiendas").onSnapshot(snapshot => {
+            const strs = []; //store
+            snapshot.forEach(doc => {
+                const data = {
+                    image: doc.data().image,
+                    url: doc.data().url,
+                    id: doc.id
+                }
+                strs.push(data);
+            })
+            setStores(strs);
+        })
     }, [])
 
 
@@ -175,6 +192,17 @@ function Tiendas({classes}) {
                         {error && (
                             <p style={{fontWeight: 'bold'}}>{error}</p>
                         )}
+                    </div>
+
+                    {/* delete tiendas */}
+                    {/* Delete categories */}
+                    <div className={classes.formContainer}>
+                        <h3 style={{fontWeight: 'bold', marginBottom: '50px'}}>Borra tiendas rouss</h3>
+                        <div>
+                            {stores && stores.map((store) => (
+                                <TiendaRow id={store.id} tiendaImg={store.image}/>
+                            ))}
+                        </div>
                     </div>
                 </div>
             ) : (
