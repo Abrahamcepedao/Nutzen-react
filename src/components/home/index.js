@@ -9,7 +9,7 @@ export default function index() {
         <>
             <Landing/>
             <Products/>
-            {/* <Phrase/> */}
+            <Phrase/>
             <Stores/>
         </>
     )
