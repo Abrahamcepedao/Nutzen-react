@@ -1,15 +1,5 @@
 import React from 'react';
 import { makeStyles } from "@material-ui/core/styles";
-import { Link } from "react-router-dom";
-import { HashLink } from 'react-router-hash-link';
-import HomeIcon from "@material-ui/icons/Home";
-import StorefrontIcon from '@material-ui/icons/Storefront';
-import LocalGroceryStoreIcon from '@material-ui/icons/LocalGroceryStore';
-import MenuBookIcon from '@material-ui/icons/MenuBook';
-import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
-import InstagramIcon from '@material-ui/icons/Instagram';
-import FacebookIcon from '@material-ui/icons/Facebook';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './others/Header';
 
 const useStyles = makeStyles((theme) =>({
