@@ -122,6 +122,7 @@ function TiendaRow({tiendaImg, id, classes}) {
 
     const removeCategory = () => {
         firebase.db.collection("tiendas").doc(id).delete();
+        setResponse(false);
     }
 
     return (
