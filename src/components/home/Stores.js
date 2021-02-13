@@ -3,18 +3,32 @@ import { makeStyles } from "@material-ui/core/styles";
 import firebase from '../../database/firebase';
 import { Col, Row } from 'react-bootstrap';
 
+//Colors
+import { PRIMARY } from "../../resources/Colors";
+
 const useStyles = makeStyles((theme) =>({
     title: {
         textAlign: 'center',
         marginBottom: '100px '
     },
+    logosContainer: {
+        width: '100%',
+        maxWidth: '1200px',
+        margin: 'auto',
+        background: 'none'
+    },
     logoImg: {
-        width: '60%',
+        width: '90%',
         margin: 'auto'
     },
     logoContainer: {
         textAlign: 'center',
-        marginBottom: '50px'
+        marginBottom: '50px',
+        background: PRIMARY,
+        width: '100%',
+        margin: 'auto',
+        padding: '20px',
+        borderRadius: '10px'
     }
 }));
 
@@ -45,7 +59,7 @@ function Stores({classes}) {
     return (
         <div id={"tiendas"}>
             <h1 className={classes.title}>¿Dónde nos encontramos?</h1>
-            <Row>
+            <Row className={classes.logosContainer}>
                 {stores && stores.map(store => (
                     <Col sm={6} lg={3}>
                     
