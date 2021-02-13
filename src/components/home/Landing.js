@@ -80,7 +80,9 @@ const useStyles = makeStyles((theme) =>({
         transform: 'translate(-50%, -50%)'
     },
     phraseTitle: {
-        color: 'white'
+        color: 'white',
+        fontWeight: 'bold',
+        fontSize: '50px'
     }
 }));
 
@@ -150,7 +152,7 @@ function Landing({classes}) {
 
                 {/* Frase */}
                 <div className={classes.phraseContainer}>
-                    <h1 className={classes.phraseTitle}>Peanut butter</h1>
+                    <h1 className={classes.phraseTitle}>Tu crema de cacahuate en Mérida</h1>
                 </div>
                 
             </div>
