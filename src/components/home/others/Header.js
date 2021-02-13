@@ -35,12 +35,16 @@ const useStyles = makeStyles((theme) =>({
         marginRight: '20px',
         textAlign: 'center',
         backgroundColor: 'none',
+        transition: 'transform 500ms',
+        '&:hover': {
+            transform: 'scale(1.08)',
+        }
     },
     menuItemLink: {
-        color: 'white',
+        color: 'black',
         '&:hover': {
             textDecoration: 'none',
-            color: 'white',
+            color: 'black',
         }
     },
     menuItemContainer: {
@@ -108,8 +112,8 @@ function Header({classes}) {
                     </div>
                     <div className={classes.menuItem}>
                         <div className={classes.menuItemContainerSocial}>
-                            <InstagramIcon style={{color: 'white', marginRight: '10px'}}/>
-                            <FacebookIcon style={{color: 'white'}}/>
+                            <InstagramIcon style={{color: 'black', marginRight: '10px'}}/>
+                            <FacebookIcon style={{color: 'black'}}/>
                         </div>
                     </div>
                 </div>
