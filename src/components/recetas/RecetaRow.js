@@ -8,7 +8,10 @@ const useStyles = makeStyles((theme) => ({
   recipesContainer: {
     display: 'flex',
     overflowX: 'scroll',
-    overflowY: 'visible'
+    overflowY: 'visible',
+    overflow: 'visible',
+    padding: '20px 0px 20px 20px',
+    marginTop: '-20px'
   },
   recipeContainer: {
       width: "300px",
@@ -28,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     width: '300px',
     height: '450px',
     borderRadius: '10px',
-    backgroundImage: 'linear-gradient(to bottom, rgba(0,0,0,0)0%, rgb(0,0,0,0.8)100%)'
+    backgroundImage: 'linear-gradient(to bottom, rgba(0,0,0,0)0%, rgb(0,0,0,0.8)100%)',
   },
   recipyLink: {
     '&:hover': {
@@ -88,7 +91,7 @@ function RecetaRow({category, id, classes}) {
 
     return (
         <div style={{marginBottom: '50px'}}>
-            <h2 style={{color: "black",  textAlign: "left", fontWeight: 'bold'}}>{category}</h2>
+            <h2 style={{position: 'relative', color: "black",  textAlign: "left", fontWeight: 'bold', left: '20px'}}>{category}</h2>
             <div className={classes.recipesContainer}>
                 {recipes && recipes.map((recipy) => (
                     <Link to="/receta-post" className={classes.recipyLink} onClick={() => setRecipy(recipy.id)}>

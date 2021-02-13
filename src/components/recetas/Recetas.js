@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) =>({
         position: 'relative',
         top: '-200px',
         marginBottom: '-200px',
-        padding: '50px',
+        padding: '50px 20px',
         zIndex: '2',
         backgroundColor: PRIMARY,
         borderBottom: `2px solid ${BLACK_BUTTON_PRIMARY}`
