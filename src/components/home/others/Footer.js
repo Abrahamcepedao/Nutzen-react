@@ -1,5 +1,8 @@
 import React from 'react';
 
+//Link
+import { Link } from "react-router-dom";
+
 //MaterialUI
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
@@ -36,6 +39,11 @@ const useStyles = makeStyles((theme) =>({
         transition: 'transform 500ms',
         '&:hover': {
             transform: 'scale(1.2)'
+        }
+    },
+    recetasLink: {
+        '&:hover': {
+            textDecoration: 'none'
         }
     }
 }));
@@ -84,7 +92,9 @@ function Footer({classes}) {
                     <p><MailIcon/> admin@nutzen.mx</p>
                 </Col>
                 <Col sm={6} md={3} className={classes.infoContainer}>
-                    <BlackButton>Ver recetas</BlackButton>
+                    <Link to="/recetas" className={classes.recetasLink}>
+                        <BlackButton>Ver recetas</BlackButton>
+                    </Link>
                 </Col>
                 <Col sm={6} md={3} className={classes.infoContainer}>
                     <div className={classes.menuItemContainerSocial}>
