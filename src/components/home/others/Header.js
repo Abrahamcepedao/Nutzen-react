@@ -10,12 +10,17 @@ import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
 
+//Colors
+import { PRIMARY } from "../../../resources/Colors";
+
 const useStyles = makeStyles((theme) =>({
     headerContainer: {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: '20px'
+        padding: '10px 20px',
+        background: PRIMARY,
+//        backgroundImage: `linear-gradient(to top, rgba(255,255,255, 0)0%, ${PRIMARY} 60%)`
     },
     logoContainer: {
         flex: '1',
@@ -40,6 +45,12 @@ const useStyles = makeStyles((theme) =>({
             transform: 'scale(1.08)',
         }
     },
+    menuItemSocial: {
+        marginLeft: '20px',
+        marginRight: '20px',
+        textAlign: 'center',
+        backgroundColor: 'none',
+    },
     menuItemLink: {
         color: 'black',
         '&:hover': {
@@ -57,6 +68,13 @@ const useStyles = makeStyles((theme) =>({
     menuItemText: {
         fontWeight: 'bold'
     },
+    socialIcon: {
+        transition: 'transform 500ms',
+        cursor: 'pointer',
+        '&:hover': {
+            transform: 'scale(1.2)'
+        }
+    }
 }));
 
 
@@ -110,10 +128,10 @@ function Header({classes}) {
                             </div>
                         </HashLink>
                     </div>
-                    <div className={classes.menuItem}>
+                    <div className={classes.menuItemSocial}>
                         <div className={classes.menuItemContainerSocial}>
-                            <InstagramIcon style={{color: 'black', marginRight: '10px'}}/>
-                            <FacebookIcon style={{color: 'black'}}/>
+                            <InstagramIcon className={classes.socialIcon} style={{color: 'black', marginRight: '10px'}}/>
+                            <FacebookIcon className={classes.socialIcon} style={{color: 'black'}}/>
                         </div>
                     </div>
                 </div>
