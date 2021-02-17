@@ -12,13 +12,18 @@ const useStyles = makeStyles((theme) =>({
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         [theme.breakpoints.up('992')]: {
-            backgroundAttachment: 'fixed'
+            backgroundAttachment: 'fixed',
+            minHeight: '600px',
         }
     },
     backgroundOverlay: {
         position: 'relative',
         width: '100vw',
         height: '100vh',
+        minHeight: '800px',
+        [theme.breakpoints.up('992')]: {
+            minHeight: '600px',
+        },
         backgroundColor: 'rgba(0,0,0,0.25)'
     },
     phraseContainer: {
@@ -30,7 +35,11 @@ const useStyles = makeStyles((theme) =>({
     phraseTitle: {
         color: 'white',
         fontWeight: 'bold',
-        fontSize: '50px'
+        fontSize: '75px',
+        textAlign: 'center',
+        [theme.breakpoints.down('768')]: {
+            fontSize: '45px'
+        }
     }
 }));
 
