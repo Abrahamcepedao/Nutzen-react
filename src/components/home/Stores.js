@@ -13,8 +13,11 @@ const useStyles = makeStyles((theme) =>({
     },
     title: {
         textAlign: 'center',
-        marginBottom: '100px ',
-        fontWeight: 'bold'
+        marginBottom: '100px',
+        fontWeight: 'bold',
+        [theme.breakpoints.down('768')]: {
+            marginBottom: '50px'
+        }
     },
     logosContainer: {
         width: '100%',
