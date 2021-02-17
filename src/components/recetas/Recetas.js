@@ -22,7 +22,8 @@ const useStyles = makeStyles((theme) =>({
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         [theme.breakpoints.up('992')]: {
-            backgroundAttachment: 'fixed'
+            backgroundAttachment: 'fixed',
+            minHeight: '500px'
         },
         zIndex: '1',
     },
@@ -30,8 +31,12 @@ const useStyles = makeStyles((theme) =>({
         position: 'relative',
         width: '100vw',
         height: '100vh',
+        minHeight: '800px',
         zIndex: '1',
-        backgroundImage: `linear-gradient(to bottom, rgba(255,255,255, 0)0%, ${PRIMARY} 80%)`
+        backgroundImage: `linear-gradient(to bottom, rgba(255,255,255, 0)0%, ${PRIMARY} 80%)`,
+        [theme.breakpoints.up('992')]: {
+            minHeight: '500px'
+        },
     },
     backgroundInnerContainer: {
         position: 'absolute',
@@ -43,7 +48,10 @@ const useStyles = makeStyles((theme) =>({
         fontWeight: 'bold',
         fontSize: '75px',
         color: 'black',
-        textAlign: 'center'
+        textAlign: 'center',
+        [theme.breakpoints.down('768')]: {
+            fontSize: '35px'
+        }
     },
     recipesContainer: {
         position: 'relative',

@@ -36,7 +36,8 @@ const useStyles = makeStyles((theme) => ({
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         [theme.breakpoints.up('992')]: {
-            backgroundAttachment: 'fixed'
+            backgroundAttachment: 'fixed',
+            minHeight: '600px'
         },
         zIndex: '1',
     },
@@ -44,6 +45,10 @@ const useStyles = makeStyles((theme) => ({
         position: 'relative',
         width: '100vw',
         height: '100vh',
+        minHeight: '800px',
+        [theme.breakpoints.up('992')]: {
+            minHeight: '600px'
+        },
         zIndex: '1',
         backgroundImage: `linear-gradient(to bottom, rgba(255,255,255, 0)0%, ${PRIMARY} 80%)`
     },
@@ -58,6 +63,9 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '75px',
         color: 'black',
         textAlign: 'center',
+        [theme.breakpoints.down('768')]: {
+            fontSize: '35px'
+        }
     },
     recipyContainer: {
         zIndex: '2',
@@ -68,7 +76,10 @@ const useStyles = makeStyles((theme) => ({
         margin: 'auto',
         padding: '50px',
         borderRadius: '25px',
-        backgroundImage: `linear-gradient(to bottom, rgba(255,255,255, 1)70%, rgba(255,255,255, 0.5)100%)`
+        backgroundImage: `linear-gradient(to bottom, rgba(255,255,255, 1)70%, rgba(255,255,255, 0.5)100%)`,
+        [theme.breakpoints.down('768')]: {
+            marginBottom: '-150px'
+        }
     },
     subTitle: {
         fontWeight: 'bold',
