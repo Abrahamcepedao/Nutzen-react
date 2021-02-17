@@ -19,7 +19,13 @@ const useStyles = makeStyles((theme) =>({
     },
     title: {
         textAlign: 'center',
-        fontWeight: 'bold'
+        marginBottom: '100px',
+        fontWeight: 'bold',
+        fontSize: '75px',
+        [theme.breakpoints.down('768')]: {
+            marginBottom: '50px',
+            fontSize: '35px'
+        }
     },
     productRow: {
         padding: '50px',
