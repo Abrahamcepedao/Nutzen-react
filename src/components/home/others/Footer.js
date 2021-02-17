@@ -80,6 +80,10 @@ const BlackButton = withStyles((theme) => ({
 
 function Footer({classes}) {
     classes = useStyles();
+    const openInNewTab = (url) => {
+        const newWindow = window.open(url, "_blank", "noopener,noreferrer");
+        if (newWindow) newWindow.opener = null;
+    };
 
     return (
         <div className={classes.backgroundContainer}>
@@ -98,8 +102,15 @@ function Footer({classes}) {
                 </Col>
                 <Col sm={6} md={3} className={classes.infoContainer}>
                     <div className={classes.menuItemContainerSocial}>
-                        <InstagramIcon className={classes.socialIcons} style={{marginRight: '10px'}}/>
-                        <FacebookIcon className={classes.socialIcons}/>
+                        <InstagramIcon 
+                            className={classes.socialIcons} 
+                            style={{marginRight: '10px'}}
+                            onClick={() => {openInNewTab("https://www.instagram.com/nutzenmx/")}}
+                        />
+                        <FacebookIcon 
+                            className={classes.socialIcons}
+                            onClick={() => {openInNewTab("https://www.facebook.com/nutzenmx/")}}
+                        />
                     </div>
                 </Col>
             </Row>
