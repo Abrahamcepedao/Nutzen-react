@@ -23,7 +23,6 @@ import clsx from "clsx";
 import "./hamburgers/dist/hamburgers.css";
 
 import Drawer from "@material-ui/core/Drawer";
-import List from "@material-ui/core/List";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 //Colors
@@ -128,7 +127,7 @@ const useStyles = makeStyles((theme) =>({
 
 function Header({classes}) {
     classes = useStyles();
-    const isMobile = useMediaQuery({query: '(max-device-width: 992px)'})
+    const isMobile = useMediaQuery({query: '(max-device-width: 992px)'});
     const [open, setOpen] = React.useState(false);
 
     return (

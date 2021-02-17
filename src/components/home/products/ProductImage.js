@@ -20,6 +20,9 @@ const useStyles = makeStyles((theme) =>({
       width: '80%',
       margin: 'auto',
       borderRadius: '10px',
+      [theme.breakpoints.down('576')]: {
+        width: '90%'
+      }
     },
 }));
 
