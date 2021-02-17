@@ -130,6 +130,11 @@ function Header({classes}) {
     const isMobile = useMediaQuery({query: '(max-device-width: 992px)'});
     const [open, setOpen] = React.useState(false);
 
+    const openInNewTab = (url) => {
+        const newWindow = window.open(url, "_blank", "noopener,noreferrer");
+        if (newWindow) newWindow.opener = null;
+    };
+
     return (
         <div>
             {!isMobile &&  
@@ -181,8 +186,16 @@ function Header({classes}) {
                             </div>
                             <div className={classes.menuItemSocial}>
                                 <div className={classes.menuItemContainerSocial}>
-                                    <InstagramIcon className={classes.socialIcon} style={{color: 'black', marginRight: '10px'}}/>
-                                    <FacebookIcon className={classes.socialIcon} style={{color: 'black'}}/>
+                                    <InstagramIcon 
+                                        className={classes.socialIcon} 
+                                        style={{color: 'black', marginRight: '10px'}}
+                                        onClick={() => {openInNewTab("https://www.instagram.com/nutzenmx/")}}
+                                    />
+                                    <FacebookIcon 
+                                        className={classes.socialIcon} 
+                                        style={{color: 'black'}}
+                                        onClick={() => {openInNewTab("https://www.facebook.com/nutzenmx/")}}
+                                    />
                                 </div>
                             </div>
                         </div>
