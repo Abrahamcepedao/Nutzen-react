@@ -42,7 +42,8 @@ const useStyles = makeStyles((theme) =>({
     title: {
         fontWeight: 'bold',
         fontSize: '75px',
-        color: 'black'
+        color: 'black',
+        textAlign: 'center'
     },
     recipesContainer: {
         position: 'relative',
