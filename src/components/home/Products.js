@@ -10,7 +10,8 @@ const useStyles = makeStyles((theme) =>({
         padding: '50px'
     },
     title: {
-        textAlign: 'center'
+        textAlign: 'center',
+        fontWeight: 'bold'
     },
     productRow: {
         padding: '50px',

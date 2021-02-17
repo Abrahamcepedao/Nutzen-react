@@ -22,7 +22,8 @@ const useStyles = makeStyles((theme) =>({
     },
     productBenefits: {
         color: 'white',
-        fontSize: '25px'
+        fontSize: '25px',
+    
     }
 }));
 
@@ -63,16 +64,16 @@ export default function ProductInfo({classes, position, benefits, type, phrase})
                 <h4 className={classes.productWeight} style={{textAlign: position}}>200gr / 300gr</h4>
             </div>
             <h3 className={classes.productPhrase} style={{textAlign: position}}>{phrase}</h3>
-            <ul>
+            <div>
                 {benefits.map((b) => (
-                    <li className={classes.productBenefits} style={{textAlign: position}}>{b}</li>
+                    <p className={classes.productBenefits} style={{textAlign: position}}>{b}</p>
                 ))}
-            </ul>
-            <div style={{textAlign: position}}>
+            </div>
+            {/* <div style={{textAlign: position}}>
                 <WhiteButton>
                     Ver recetas
                 </WhiteButton>
-            </div>
+            </div> */}
         </div>
     )
 }
