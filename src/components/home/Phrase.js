@@ -31,10 +31,16 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '10px',
         textAlign: 'center',
         maxWidth: '500px',
+        [theme.breakpoints.down('576')]: {
+            maxWidth: '95%'
+        }
     },
     phrase: {
         fontWeight: 'bold',
-        fontSize: '75px'
+        fontSize: '75px',
+        [theme.breakpoints.down('768')]: {
+            fontSize: '45px'
+        }
     }
 }));
 
