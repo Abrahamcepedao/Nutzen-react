@@ -28,7 +28,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 //Colors
 import { PRIMARY } from "../../../resources/Colors";
 
-const drawerWidth = 240;
+const drawerWidth = 175;
 
 const useStyles = makeStyles((theme) =>({
     appBar: {
@@ -93,14 +93,15 @@ const useStyles = makeStyles((theme) =>({
         textAlign: 'center'
     },
     menuItemContainerSocial: {
-        paddingTop: '20px'
+        paddingTop: '15px'
     },
     menuItemText: {
         fontWeight: 'bold'
     },
     socialIcon: {
-        transition: 'transform 500ms',
+        fontSize: '45px',
         cursor: 'pointer',
+        transition: 'transform 500ms',
         '&:hover': {
             transform: 'scale(1.2)'
         }
@@ -113,14 +114,17 @@ const useStyles = makeStyles((theme) =>({
         flexShrink: 0,
         backgroundColor: PRIMARY,
         zIndex: "1",
-        border: 'none'
+        border: 'none',
+        height: 'auto',
+        borderBottomLeftRadius: '10px'
     },
     navButton: {
         outline: "none !important",
         zIndex: "10",
     },
     movilMenuContainer: {
-        paddingTop: '75px'
+        paddingTop: '100px',
+        paddingBottom: '75px'
     }
 }));
 

@@ -56,7 +56,7 @@ function Landing({classes}) {
 
                 {/* Frase */}
                 <div className={classes.phraseContainer}>
-                    <h1 className={classes.phraseTitle}>Tu crema de cacahuate en Mérida</h1>
+                    {/* <h1 className={classes.phraseTitle}>Tu crema de cacahuate en Mérida</h1> */}
                 </div>
                 
             </div>

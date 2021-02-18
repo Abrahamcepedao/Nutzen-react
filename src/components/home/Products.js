@@ -55,7 +55,7 @@ function Products({classes}) {
             <h1 className={classes.title}>Products</h1>
             <Row className={classes.productRow} style={{backgroundImage: 'linear-gradient(to top, #ff0844 0%, #ffb199 100%)'}}>
                 <Col md={6}>
-                    <ProductImage type="natural"/>
+                    <ProductImage type="original"/>
                 </Col>
                 <Col md={6}>
                     <ProductInfo phrase="¡Crema de cacahuate natural perfecta para deportistas que buscan mantener una vida sana!" type="Natural" position="right" benefits={benefits[0]}/>

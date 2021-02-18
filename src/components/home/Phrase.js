@@ -23,14 +23,14 @@ const useStyles = makeStyles((theme) => ({
     },
     phraseContainer: {
         position: 'relative',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        background: PRIMARY,
+        //top: '50%',
+        //left: '50%',
+        //transform: 'translate(-50%, -50%)',
+        //background: PRIMARY,
         padding: '50px',
-        borderRadius: '10px',
+        //borderRadius: '10px',
         textAlign: 'center',
-        maxWidth: '500px',
+        maxWidth: '100%',
         [theme.breakpoints.down('576')]: {
             maxWidth: '95%'
         }

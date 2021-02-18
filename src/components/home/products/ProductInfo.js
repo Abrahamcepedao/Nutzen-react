@@ -77,7 +77,12 @@ export default function ProductInfo({classes, position, benefits, type, phrase})
         <div className={classes.container}>
             <div>
                 <h1 className={classes.productTitle} style={{textAlign: isMobile ? "center" : position}}>{type}</h1>
-                <h4 className={classes.productWeight} style={{textAlign: isMobile ? "center" : position}}>200gr / 300gr</h4>
+                {/* matcha 200gr $220 --- 200gr $105, 300gr $145 */}
+                {type !== "matcha" &&
+                    <h4 className={classes.productWeight} style={{textAlign: isMobile ? "center" : position}}>200gr / 300gr</h4>
+                }
+                
+                
             </div>
             <h3 className={classes.productPhrase} style={{textAlign: isMobile ? "center" : position}}>{phrase}</h3>
             <div>
