@@ -145,7 +145,9 @@ function Header({classes}) {
             {!isMobile &&  
                 <div className={classes.headerContainer}>
                     <div className={classes.logoContainer}>
-                        <img alt="Nutzen" className={classes.logoImg} src="./img/home/landing/logo.png"/>
+                        <Link to="/">
+                            <img alt="Nutzen" className={classes.logoImg} src="./img/home/landing/logo.png"/>
+                        </Link>
                     </div>
                     <div className={classes.menuContainer}>
                         <div className={classes.menuInnerContainer}>
