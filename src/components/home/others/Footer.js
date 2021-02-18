@@ -86,14 +86,14 @@ function Footer({classes}) {
     };
 
     return (
-        <div className={classes.backgroundContainer}>
+        <div className={classes.backgroundContainer} id={"contacto"}>
             <Row>
                 <Col sm={6} md={3} className={classes.infoContainer}>
                     <img alt="Nutzen" className={classes.logoImg} src="./img/home/landing/logo.png"/>
                 </Col>
                 <Col sm={6} md={3} className={classes.infoContainer}>
-                    <p><PhoneIphoneIcon/> (999) 908 8092</p>
-                    <p><MailIcon/> admin@nutzen.mx</p>
+                    <p style={{fontSize: '20px'}}><PhoneIphoneIcon/> (999) 908 8092</p>
+                    <p style={{fontSize: '20px'}}><MailIcon/> admin@nutzen.mx</p>
                 </Col>
                 <Col sm={6} md={3} className={classes.infoContainer}>
                     <Link to="/recetas" className={classes.recetasLink}>

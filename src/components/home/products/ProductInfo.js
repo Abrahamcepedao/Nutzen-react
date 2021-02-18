@@ -21,10 +21,10 @@ const useStyles = makeStyles((theme) =>({
     },
     productTitle: {
         color: 'white',
-        fontSize: '100px',
+        fontSize: '75px',
         fontWeight: 'bold',
         [theme.breakpoints.down('768')]: {
-            fontSize: '75px',
+            fontSize: '45px',
             textAlign: 'center !important'
         }
     },

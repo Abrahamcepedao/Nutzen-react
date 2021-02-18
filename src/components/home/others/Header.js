@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) =>({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: '10px 20px',
+        padding: '5px 20px',
         background: PRIMARY,
 //        backgroundImage: `linear-gradient(to top, rgba(255,255,255, 0)0%, ${PRIMARY} 60%)`
     },
@@ -90,7 +90,8 @@ const useStyles = makeStyles((theme) =>({
     },
     menuItemContainer: {
         paddingTop: '10px',
-        textAlign: 'center'
+        textAlign: 'center',
+        fontSize: '20px'
     },
     menuItemContainerSocial: {
         paddingTop: '15px'
