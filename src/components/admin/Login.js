@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { Button, FormControl, TextField } from '@material-ui/core';
 import { useDataLayerValue } from "../../ContextAPI/DataLayer";
@@ -85,19 +85,33 @@ const MyTextField = withStyles({
 function Login({classes}) {
     classes = useStyles();
 
-    const [password, setPassword] = useState("")    
+    const [password, setPassword] = useState(localStorage.getItem("password"))    
     const [error, setError] = useState("");
     const [{user}, dispatch] = useDataLayerValue();
 
     const envPassword = "Nutzen2016";
 
+    useEffect(() => {
+      if(password){
+        console.log("password: ",password)
+        setUser();
+      }
+      console.log(password)
+    },[])
+
     const setUser = (event) => {
-        event.preventDefault();
+        if(event){
+          event.preventDefault();
+        }
+        
+        localStorage.setItem("password", password)
+        console.log(password)
         if(password === envPassword){
             dispatch({
                 type: "SET_USER",
                 user: "Rocio"
             })
+            console.log("user is set")
         } else{
             setError("Recuerda bien la contraseña mamita bonita..")
         }
@@ -107,7 +121,8 @@ function Login({classes}) {
         return (
             <Redirect to="/admin"/>
         )
-    }
+    };
+    
 
     return (
         <div className={classes.backgroundContainer}>

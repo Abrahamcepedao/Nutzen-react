@@ -1,8 +1,7 @@
 import React from 'react';
-import { makeStyles, withStyles } from "@material-ui/core/styles";
-import { Button } from '@material-ui/core';
 
 //MaterialUI
+import { makeStyles } from "@material-ui/core/styles";
 import CheckRoundedIcon from '@material-ui/icons/CheckRounded';
 
 //Responsive
@@ -41,33 +40,6 @@ const useStyles = makeStyles((theme) =>({
     }
 }));
 
-const WhiteButton = withStyles((theme) => ({
-  root: {
-    color: 'black',
-    backgroundColor: "rgb(255,255,255)",
-    borderRadius: "100px",
-    transition: "transform 450ms",
-    fontWeight: "bolder",
-    padding: "10px 20px",
-    marginBottom: '20px',
-    '&:hover': {
-      backgroundColor: "rgb(235,235,235)",
-      transform: "scale(1.08)",
-    },
-    '&:active': {
-      boxShadow: 'none',
-      backgroundColor: "rgb(235,235,235)",
-      border: 'none',
-    },
-    '&:focus': {
-      backgroundColor: "rgb(235,235,235)",
-    },
-    '&:disabled': {
-        opacity: '0.7',
-        color: 'black'
-    }
-  },
-}))(Button);
 
 export default function ProductInfo({classes, position, benefits, type, phrase}) {
     classes = useStyles();

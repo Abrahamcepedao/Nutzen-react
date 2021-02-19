@@ -6,7 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import FormatQuoteIcon from '@material-ui/icons/FormatQuote';
 
 //Colors
-import { PRIMARY } from "../../resources/Colors";
+//import { PRIMARY } from "../../resources/Colors";
 
 const useStyles = makeStyles((theme) => ({
     phraseBackground: {
