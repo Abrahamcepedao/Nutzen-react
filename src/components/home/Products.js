@@ -7,12 +7,16 @@ import { Col, Row } from 'react-bootstrap';
 import ProductImage from './products/ProductImage';
 import ProductInfo from './products/ProductInfo';
 
+//Colors
+import { PRIMARY } from '../../resources/Colors'
+
 //Responsive
 import { useMediaQuery } from 'react-responsive'
 
 const useStyles = makeStyles((theme) =>({
     backgroundContainer: {
         padding: '50px',
+        background: PRIMARY,
         [theme.breakpoints.down('768')]: {
             padding: '50px 10px'
         }
