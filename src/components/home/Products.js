@@ -57,7 +57,7 @@ function Products({classes}) {
     return (
         <div className={classes.backgroundContainer} id={"productos"}>
             <h1 className={classes.title}>Products</h1>
-            <Row className={classes.productRow} style={{backgroundImage: 'linear-gradient(to top, #c79081 0%, #dfa579 100%)'}}>
+            <Row className={classes.productRow} /* style={{backgroundImage: 'linear-gradient(to top, #c79081 0%, #dfa579 100%)'}} */>
                 <Col md={6}>
                     <ProductImage type="original"/>
                 </Col>
@@ -66,7 +66,7 @@ function Products({classes}) {
                 </Col>
             </Row>
             {!isMobile &&
-                <Row className={classes.productRow} style={{backgroundImage: 'linear-gradient(to top, #c79081 0%, #dfa579 100%)'}}>
+                <Row className={classes.productRow} /* style={{backgroundImage: 'linear-gradient(to top, #c79081 0%, #dfa579 100%)'}} */>
                     <Col md={6}>
                         <ProductInfo phrase="¡Crema de cacahuate natural perfecta para deportistas que buscan mantener una vida sana!" type="Matcha" position="left" benefits={benefits[1]}/>
                     </Col>
@@ -76,7 +76,7 @@ function Products({classes}) {
                 </Row>
             }
             {isMobile &&
-                <Row className={classes.productRow} style={{backgroundImage: 'linear-gradient(to top, #c79081 0%, #dfa579 100%)'}}>
+                <Row className={classes.productRow} /* style={{backgroundImage: 'linear-gradient(to top, #c79081 0%, #dfa579 100%)'}} */>
                     <Col md={6}>
                         <ProductImage type="matcha"/>
                     </Col>
@@ -85,7 +85,7 @@ function Products({classes}) {
                     </Col>
                 </Row>
             }
-            <Row className={classes.productRow} style={{backgroundImage: 'linear-gradient(to top, #c79081 0%, #dfa579 100%)'}}>
+            <Row className={classes.productRow} /* style={{backgroundImage: 'linear-gradient(to top, #c79081 0%, #dfa579 100%)'}} */>
                 <Col md={6}>
                     <ProductImage type="azucar"/>
                 </Col>

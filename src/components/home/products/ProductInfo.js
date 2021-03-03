@@ -7,6 +7,9 @@ import CheckRoundedIcon from '@material-ui/icons/CheckRounded';
 //Responsive
 import { useMediaQuery } from 'react-responsive'
 
+//Colors
+import { BLACK_BUTTON_PRIMARY } from '../../../resources/Colors'
+
 const useStyles = makeStyles((theme) =>({
     container: {
         height: '100%',
@@ -16,25 +19,26 @@ const useStyles = makeStyles((theme) =>({
         padding: '20px 40px',
         [theme.breakpoints.down('768')]: {
             padding: '20px 10px'
-        }
+        },
     },
     productTitle: {
-        color: 'white',
+        color: BLACK_BUTTON_PRIMARY,
         fontSize: '75px',
         fontWeight: 'bold',
+        borderTop: `8px solid ${BLACK_BUTTON_PRIMARY}`,
         [theme.breakpoints.down('768')]: {
             fontSize: '45px',
             textAlign: 'center !important'
         }
     },
     productWeight: {
-        color: 'white'
+        color: BLACK_BUTTON_PRIMARY
     },
     productPhrase: {
-        color: 'white',
+        color: BLACK_BUTTON_PRIMARY,
     },
     productBenefits: {
-        color: 'white',
+        color: BLACK_BUTTON_PRIMARY,
         fontSize: '25px',
     
     }
