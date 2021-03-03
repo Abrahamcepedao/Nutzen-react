@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from 'react';
+
+//MaterialUI
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { Button, FormControl, TextField } from '@material-ui/core';
+
+//Data Layer
 import { useDataLayerValue } from "../../ContextAPI/DataLayer";
+
+//Router
 import { Redirect } from 'react-router-dom';
+
+//Colors
 import { PRIMARY, BLACK_BUTTON_PRIMARY, BLACK_BUTTON_SECONDARY } from "../../resources/Colors";
 
 const useStyles = makeStyles((theme) => ({

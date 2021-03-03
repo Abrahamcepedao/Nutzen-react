@@ -56,7 +56,7 @@ function Products({classes}) {
 
     return (
         <div className={classes.backgroundContainer} id={"productos"}>
-            <h1 className={classes.title}>Products</h1>
+            <h1 className={classes.title}>Productos</h1>
             <Row className={classes.productRow} /* style={{backgroundImage: 'linear-gradient(to top, #c79081 0%, #dfa579 100%)'}} */>
                 <Col md={6}>
                     <ProductImage type="original"/>

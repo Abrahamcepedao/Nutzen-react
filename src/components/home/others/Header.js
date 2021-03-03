@@ -26,7 +26,7 @@ import Drawer from "@material-ui/core/Drawer";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 //Colors
-import { PRIMARY } from "../../../resources/Colors";
+import { PRIMARY, BLACK_BUTTON_PRIMARY } from "../../../resources/Colors";
 
 const drawerWidth = 175;
 
@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) =>({
         alignItems: 'center',
         justifyContent: 'space-between',
         padding: '5px 20px',
-        background: PRIMARY,
+        //background: PRIMARY,
 //        backgroundImage: `linear-gradient(to top, rgba(255,255,255, 0)0%, ${PRIMARY} 60%)`
     },
     logoContainer: {
@@ -80,12 +80,13 @@ const useStyles = makeStyles((theme) =>({
         marginRight: '20px',
         textAlign: 'center',
         backgroundColor: 'none',
+
     },
     menuItemLink: {
-        color: 'black',
+        color: BLACK_BUTTON_PRIMARY,
         '&:hover': {
             textDecoration: 'none',
-            color: 'black',
+            color: BLACK_BUTTON_PRIMARY,
         }
     },
     menuItemContainer: {
@@ -103,6 +104,7 @@ const useStyles = makeStyles((theme) =>({
         fontSize: '45px',
         cursor: 'pointer',
         transition: 'transform 500ms',
+        color: BLACK_BUTTON_PRIMARY,
         '&:hover': {
             transform: 'scale(1.2)'
         }
@@ -146,7 +148,7 @@ function Header({classes}) {
                 <div className={classes.headerContainer}>
                     <div className={classes.logoContainer}>
                         <Link to="/">
-                            <img alt="Nutzen" className={classes.logoImg} src="./img/home/landing/logo.png"/>
+                            <img alt="Nutzen" className={classes.logoImg} src="./img/home/landing/logo_noback.png"/>
                         </Link>
                     </div>
                     <div className={classes.menuContainer}>
@@ -212,7 +214,7 @@ function Header({classes}) {
             {isMobile &&
                 <div className={classes.headerContainer}>
                     <div className={classes.logoContainer}>
-                        <img alt="Nutzen" className={classes.logoImg} src="./img/home/landing/logo.png"/>
+                        <img alt="Nutzen" className={classes.logoImg} src="./img/home/landing/logo_noback.png"/>
                     </div>
                     <div>
                         <IconButton
