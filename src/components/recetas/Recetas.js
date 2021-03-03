@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) =>({
     title: {
         fontWeight: 'bold',
         fontSize: '75px',
-        color: 'black',
+        color: BLACK_BUTTON_PRIMARY,
         textAlign: 'center',
         [theme.breakpoints.down('768')]: {
             fontSize: '35px'
