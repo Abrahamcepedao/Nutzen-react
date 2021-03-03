@@ -4,12 +4,14 @@ import firebase from '../../database/firebase';
 import { Col, Row } from 'react-bootstrap';
 
 //Colors
-import { PRIMARY } from "../../resources/Colors";
+import { PRIMARY, BLACK_BUTTON_PRIMARY } from "../../resources/Colors";
 
 const useStyles = makeStyles((theme) =>({
     backgroundContainer: {
         paddingTop: '50px',
-        paddingBottom: '20px'
+        paddingBottom: '20px',
+        background: PRIMARY,
+        borderBottom: `4px solid ${BLACK_BUTTON_PRIMARY}`
     },
     title: {
        textAlign: 'center',
