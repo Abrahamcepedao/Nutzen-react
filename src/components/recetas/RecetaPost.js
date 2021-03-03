@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
             minHeight: '600px'
         },
         zIndex: '1',
-        backgroundImage: `linear-gradient(to bottom, rgba(255,255,255, 0)0%, ${PRIMARY} 80%)`
+        backgroundImage: `linear-gradient(to bottom, rgba(225, 210, 186, 0.75)0%, rgba(225, 210, 186, 0.5)50%, ${PRIMARY} 80%)`,
     },
     backgroundInnerContainer: {
         position: 'absolute',
