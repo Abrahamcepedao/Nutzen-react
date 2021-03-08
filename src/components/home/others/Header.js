@@ -35,20 +35,20 @@ const useStyles = makeStyles((theme) =>({
         height: "100px",
         backgroundColor: "black",
         transition: theme.transitions.create(["margin", "width"], {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
         }),
         outline: "none",
         marginBottom: "0px",
         [theme.breakpoints.down("480")]: {
-        height: "70px",
+            height: "70px",
         },
     },
     headerContainer: {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: '5px 20px',
+        padding: '10px 20px 5px 20px',
         //background: PRIMARY,
 //        backgroundImage: `linear-gradient(to top, rgba(255,255,255, 0)0%, ${PRIMARY} 60%)`
     },
@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) =>({
         width: '200px'
     },
     menuContainer: {
-        backgroundColor: 'none',
+        backgroundColor: 'none'
     },
     menuInnerContainer: {
         display: 'flex',
@@ -85,8 +85,7 @@ const useStyles = makeStyles((theme) =>({
     menuItemLink: {
         color: BLACK_BUTTON_PRIMARY,
         '&:hover': {
-            textDecoration: 'none',
-            color: BLACK_BUTTON_PRIMARY,
+            color: BLACK_BUTTON_PRIMARY
         }
     },
     menuItemContainer: {
@@ -98,7 +97,9 @@ const useStyles = makeStyles((theme) =>({
         paddingTop: '15px'
     },
     menuItemText: {
-        fontWeight: 'bold'
+        position: "relative",
+        fontWeight: 'normal',
+        top: "15px"
     },
     socialIcon: {
         fontSize: '45px',
@@ -106,7 +107,7 @@ const useStyles = makeStyles((theme) =>({
         transition: 'transform 500ms',
         color: BLACK_BUTTON_PRIMARY,
         '&:hover': {
-            transform: 'scale(1.2)'
+            transform: 'scale(1.2)',
         }
     },
     hamburguerMenu: {
@@ -156,40 +157,35 @@ function Header({classes}) {
                             <div className={classes.menuItem}>
                                 <Link to="/" className={classes.menuItemLink}>
                                     <div className={classes.menuItemContainer}>
-                                        <HomeIcon />
-                                        <p className={classes.menuItemText}>Inicio</p>
+                                        <p className={classes.menuItemText}>INICIO</p>
                                     </div>
                                 </Link>
                             </div>
                             <div className={classes.menuItem}>
                                 <HashLink to="/#productos" smooth className={classes.menuItemLink}>
                                     <div className={classes.menuItemContainer}>
-                                        <LocalGroceryStoreIcon />
-                                        <p className={classes.menuItemText}>Productos</p>
+                                        <p className={classes.menuItemText}>PRODUCTOS</p>
                                     </div>
                                 </HashLink>
                             </div>
                             <div className={classes.menuItem}>
                                 <HashLink to="/#tiendas" smooth className={classes.menuItemLink}>
                                     <div className={classes.menuItemContainer}>
-                                        <StorefrontIcon />
-                                        <p className={classes.menuItemText}>Tiendas</p>
+                                        <p className={classes.menuItemText}>TIENDAS</p>
                                     </div>
                                 </HashLink>
                             </div>
                             <div className={classes.menuItem}>
                                 <Link to="/recetas" className={classes.menuItemLink}>
                                     <div className={classes.menuItemContainer}>
-                                        <MenuBookIcon />
-                                        <p className={classes.menuItemText}>Recetas</p>
+                                        <p className={classes.menuItemText}>RECETAS</p>
                                     </div>
                                 </Link>
                             </div>
                             <div className={classes.menuItem}>
                                 <HashLink to="/#contacto" smooth className={classes.menuItemLink}>
                                     <div className={classes.menuItemContainer}>
-                                        <PhoneIphoneIcon />
-                                        <p className={classes.menuItemText}>Contacto</p>
+                                        <p className={classes.menuItemText}>CONTACTO</p>
                                     </div>
                                 </HashLink>
                             </div>
@@ -250,40 +246,35 @@ function Header({classes}) {
                     <div className={classes.menuItem}>
                         <Link to="/" className={classes.menuItemLink}>
                             <div className={classes.menuItemContainer}>
-                                <HomeIcon />
-                                <p className={classes.menuItemText}>Inicio</p>
+                                <p className={classes.menuItemText}>INICIO</p>
                             </div>
                         </Link>
                     </div>
                     <div className={classes.menuItem}>
                         <HashLink to="/#productos" smooth className={classes.menuItemLink}>
                             <div className={classes.menuItemContainer}>
-                                <LocalGroceryStoreIcon />
-                                <p className={classes.menuItemText}>Productos</p>
+                                <p className={classes.menuItemText}>PRODUCTOS</p>
                             </div>
                         </HashLink>
                     </div>
                     <div className={classes.menuItem}>
                         <HashLink to="/#tiendas" smooth className={classes.menuItemLink}>
                             <div className={classes.menuItemContainer}>
-                                <StorefrontIcon />
-                                <p className={classes.menuItemText}>Tiendas</p>
+                                <p className={classes.menuItemText}>TIENDAS</p>
                             </div>
                         </HashLink>
                     </div>
                     <div className={classes.menuItem}>
                         <Link to="/recetas" className={classes.menuItemLink}>
                             <div className={classes.menuItemContainer}>
-                                <MenuBookIcon />
-                                <p className={classes.menuItemText}>Recetas</p>
+                                <p className={classes.menuItemText}>RECETAS</p>
                             </div>
                         </Link>
                     </div>
                     <div className={classes.menuItem}>
                         <HashLink to="/#contacto" smooth className={classes.menuItemLink}>
                             <div className={classes.menuItemContainer}>
-                                <PhoneIphoneIcon />
-                                <p className={classes.menuItemText}>Contacto</p>
+                                <p className={classes.menuItemText}>CONTACTO</p>
                             </div>
                         </HashLink>
                     </div>

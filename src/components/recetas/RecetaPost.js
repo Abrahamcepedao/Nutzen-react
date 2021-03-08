@@ -10,8 +10,7 @@ import FormatQuoteRoundedIcon from '@material-ui/icons/FormatQuoteRounded';
 import KitchenRoundedIcon from '@material-ui/icons/KitchenRounded';
 import FormatListBulletedRoundedIcon from '@material-ui/icons/FormatListBulletedRounded';
 import PlaylistAddCheckRoundedIcon from '@material-ui/icons/PlaylistAddCheckRounded';
-import ArrowRightAltRoundedIcon from '@material-ui/icons/ArrowRightAltRounded';
-import CheckRoundedIcon from '@material-ui/icons/CheckRounded';
+import FiberManualRecordRoundedIcon from '@material-ui/icons/FiberManualRecordRounded';
 import { makeStyles } from "@material-ui/core/styles";
 
 //Colors
@@ -83,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
     },
     subTitle: {
         fontWeight: 'bold',
-        fontSize: '30px'
+        fontSize: '25px'
     },
     subtitleIcon: {
         fontSize: '30px'
@@ -92,12 +91,17 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         alignItems: 'center'
     },
+    textItem: {
+        fontSize: "20px"
+    },
     number: {
-        fontSize: '30px',
+        position: "relative",
+        top: "5px",
+        fontSize: '22px',
         fontWeight: 'bold',
         marginRight: '10px',
         borderBottom: `10px solid ${PRIMARY}`,
-        lineHeight: '20px'
+        lineHeight: '10px'
     }
 }));
 
@@ -194,15 +198,15 @@ function RecetaPost({classes}) {
                         <Col md={6}>
                             <p className={classes.subTitle}><KitchenRoundedIcon className={classes.subtitleIcon}/>Ingredientes</p>
                                 {ingredients && ingredients.map(item => (
-                                    <p key={item.id}><ArrowRightAltRoundedIcon style={{fontSize: '30px'}}/> {item.texto}</p>
+                                    <p key={item.id} className={classes.textItem}><FiberManualRecordRoundedIcon style={{fontSize: '30px'}}/> {item.texto}</p>
                                 ))}
                         </Col>
                         <Col md={6}>   
                             <p className={classes.subTitle}><FormatListBulletedRoundedIcon className={classes.subtitleIcon}/> Proceso</p>
                                 {steps && steps.map((item, i) => (
                                     <div className={classes.processContainer}>
-                                        <p className={classes.number}>{i}</p>
-                                        <p key={item.id}>{item.texto}</p>
+                                        <p className={classes.number}>{i+1}</p>
+                                        <p key={item.id} className={classes.textItem}>{item.texto}</p>
                                     </div>
                                 ))}
                         </Col>
@@ -211,7 +215,7 @@ function RecetaPost({classes}) {
                     
                     <p className={classes.subTitle}><PlaylistAddCheckRoundedIcon className={classes.subtitleIcon}/> Notas</p>
                         {notes && notes.map(item => (
-                            <p key={item.id}><CheckRoundedIcon style={{fontSize: '30px'}}/> {item.texto}</p>
+                            <p key={item.id} className={classes.textItem}><FiberManualRecordRoundedIcon style={{fontSize: '30px'}}/> {item.texto}</p>
                         ))}
                 </div>
             </div>

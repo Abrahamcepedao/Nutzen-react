@@ -6,7 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import FormatQuoteIcon from '@material-ui/icons/FormatQuote';
 
 //Colors
-//import { PRIMARY } from "../../resources/Colors";
+import { PRIMARY } from "../../resources/Colors";
 
 const useStyles = makeStyles((theme) => ({
     phraseBackground: {
@@ -29,10 +29,11 @@ const useStyles = makeStyles((theme) => ({
     },
     phraseContainer: {
         position: 'relative',
-        //top: '50%',
-        //left: '50%',
-        //transform: 'translate(-50%, -50%)',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
         //background: PRIMARY,
+         backgroundImage: 'radial-gradient(rgba(225, 210, 186, 1), 10%, rgba(225, 210, 186, 0)90%, rgba(225, 210, 186, 0)100%)',
         padding: '50px',
         //borderRadius: '10px',
         textAlign: 'center',

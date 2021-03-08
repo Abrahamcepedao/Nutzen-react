@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) =>({
         [theme.breakpoints.up('992')]: {
             minHeight: '600px',
         },
-        backgroundColor: 'rgba(225, 210, 186, 0.75)'
+        backgroundColor: 'rgba(225, 210, 186, 0.5)'
     },
     phraseContainer: {
         position: 'absolute',
@@ -44,6 +44,7 @@ const useStyles = makeStyles((theme) =>({
         transform: 'translate(-50%, -50%)',
         textAlign: "center",
         padding: "50px",
+        backgroundImage: 'radial-gradient(rgba(225, 210, 186, 1), 10%, rgba(225, 210, 186, 0)90%, rgba(225, 210, 186, 0)100%)',
         [theme.breakpoints.down('576')]: {
             padding: "20px"
         }
