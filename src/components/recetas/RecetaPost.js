@@ -20,6 +20,7 @@ import { PRIMARY, BLACK_BUTTON_PRIMARY } from "../../resources/Colors";
 import Footer from '../home/others/Footer';
 import Header from '../home/others/Header';
 import { Col, Row } from 'react-bootstrap';
+import GoBack from '../home/others/GoBack';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -221,6 +222,9 @@ function RecetaPost({classes}) {
             </div>
             {/* Footer */}
             <Footer/>
+
+            {/* GoBack */}
+            <GoBack/>
         </>
     )
 }

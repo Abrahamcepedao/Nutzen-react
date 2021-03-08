@@ -6,11 +6,6 @@ import { HashLink } from 'react-router-hash-link';
 
 //MaterialUI
 import { makeStyles } from "@material-ui/core/styles";
-import HomeIcon from "@material-ui/icons/Home";
-import StorefrontIcon from '@material-ui/icons/Storefront';
-import LocalGroceryStoreIcon from '@material-ui/icons/LocalGroceryStore';
-import MenuBookIcon from '@material-ui/icons/MenuBook';
-import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import IconButton from "@material-ui/core/IconButton";
@@ -144,7 +139,7 @@ function Header({classes}) {
     };
 
     return (
-        <div>
+        <div id={"header"}>
             {!isMobile &&  
                 <div className={classes.headerContainer}>
                     <div className={classes.logoContainer}>

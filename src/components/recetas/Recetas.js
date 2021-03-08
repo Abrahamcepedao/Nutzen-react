@@ -11,6 +11,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 //Colors
 import { PRIMARY, BLACK_BUTTON_PRIMARY } from "../../resources/Colors";
+import GoBack from '../home/others/GoBack';
 
 const useStyles = makeStyles((theme) =>({
     background: {
@@ -108,6 +109,9 @@ function Recetas({classes}) {
             
             {/* Footer */}
             <Footer/>
+
+            {/* Goback */}
+            <GoBack/>
         </div>
     )
 }
