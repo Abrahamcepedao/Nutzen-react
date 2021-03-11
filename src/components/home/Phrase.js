@@ -5,8 +5,8 @@ import firebase from '../../database/firebase';
 import { makeStyles } from "@material-ui/core/styles";
 import FormatQuoteIcon from '@material-ui/icons/FormatQuote';
 
-//Colors
-import { PRIMARY } from "../../resources/Colors";
+//Device detect
+import { isDesktop } from 'react-device-detect'
 
 const useStyles = makeStyles((theme) => ({
     phraseBackground: {

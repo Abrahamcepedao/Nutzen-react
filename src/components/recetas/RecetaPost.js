@@ -16,6 +16,9 @@ import { makeStyles } from "@material-ui/core/styles";
 //Colors
 import { PRIMARY, BLACK_BUTTON_PRIMARY } from "../../resources/Colors";
 
+//Device detect
+import { isDesktop } from 'react-device-detect'
+
 //Components
 import Footer from '../home/others/Footer';
 import Header from '../home/others/Header';

@@ -13,6 +13,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import { PRIMARY, BLACK_BUTTON_PRIMARY } from "../../resources/Colors";
 import GoBack from '../home/others/GoBack';
 
+//Device detect
+import { isDesktop } from 'react-device-detect'
+
 const useStyles = makeStyles((theme) =>({
     background: {
         width: '100vw',
