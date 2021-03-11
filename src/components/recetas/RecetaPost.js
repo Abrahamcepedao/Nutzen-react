@@ -30,14 +30,13 @@ const useStyles = makeStyles((theme) => ({
   background: {
         width: '100vw',
         height: '100vh',
-        minHeight: '800px',
+        minHeight: '600px',
         backgroundImage: "url(./img/home/landing/background.jpg)",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         [theme.breakpoints.up('992')]: {
-            backgroundAttachment: 'fixed',
-            minHeight: '600px'
+            minHeight: '800px'
         },
         zIndex: '1',
     },
@@ -180,7 +179,7 @@ function RecetaPost({classes}) {
         <>
             <div className={classes.container}>
                 {/* Header */}
-                <div className={classes.background} style={{backgroundImage: `url(${image})`}}>
+                <div className={classes.background} style={{backgroundImage: `url(${image})`, backgroundAttachment: isDesktop && "fixed"}}>
                     <div className={classes.backgroundOverlay}>
                         <Header/>
                         <div className={classes.backgroundInnerContainer}>

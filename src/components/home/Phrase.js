@@ -17,9 +17,6 @@ const useStyles = makeStyles((theme) => ({
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        [theme.breakpoints.up('992')]: {
-            backgroundAttachment: 'fixed'
-        }
     },
     overlay: {
         position: 'relative',
@@ -64,7 +61,7 @@ function Phrase({classes}) {
     }, [])
 
     return (
-        <div className={classes.phraseBackground}>
+        <div className={classes.phraseBackground} style={{backgroundAttachment: isDesktop && "fixed"}}>
             <div className={classes.overlay}>
                 <div className={classes.phraseContainer}>
                     <FormatQuoteIcon style={{fontSize: '35px'}}/>

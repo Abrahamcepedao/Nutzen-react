@@ -17,14 +17,13 @@ const useStyles = makeStyles((theme) =>({
     background: {
         width: '100vw',
         height: '100vh',
-        minHeight: '800px',
+        minHeight: '600px',
         backgroundImage: "url(./img/home/landing/background.jpg)",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         [theme.breakpoints.up('992')]: {
-            backgroundAttachment: 'fixed',
-            minHeight: '500px'
+            minHeight: '800px'
         },
         zIndex: '1',
     },
@@ -89,7 +88,7 @@ function Recetas({classes}) {
     return (
         <div>
             {/* header */}
-            <div className={classes.background}>
+            <div className={classes.background} style={{backgroundAttachment: isDesktop && "fixed"}}>
                 <div className={classes.backgroundOverlay}>
                     <Header/>
                     <div className={classes.backgroundInnerContainer}>

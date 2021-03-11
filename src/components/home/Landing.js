@@ -13,18 +13,21 @@ import Header from './others/Header';
 //Colors
 import { PRIMARY, BLACK_BUTTON_PRIMARY, BLACK_BUTTON_SECONDARY } from "../../resources/Colors";
 
+//Device detect
+import { isDesktop } from 'react-device-detect'
+
 const useStyles = makeStyles((theme) =>({
     backgroundContainer: {
         width: '100vw',
         height: '100vh',
-        minHeight: '800px',
+        minHeight: '600px',
         backgroundImage: "url(./img/home/landing/background.jpg)",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         [theme.breakpoints.up('992')]: {
-            backgroundAttachment: 'fixed',
-            minHeight: '600px',
+            //backgroundAttachment: 'fixed',
+            minHeight: '800px',
         }
     },
     backgroundOverlay: {
@@ -98,7 +101,7 @@ function Landing({classes}) {
     classes = useStyles();
 
     return (
-        <div className={classes.backgroundContainer}>
+        <div className={classes.backgroundContainer} style={{backgroundAttachment: isDesktop && "fixed"}}>
             <div className={classes.backgroundOverlay}>
                 {/* Header */}
                 <Header/>
