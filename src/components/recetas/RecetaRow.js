@@ -88,9 +88,7 @@ function RecetaRow({category, id, classes}) {
                 }
                 rec.push(data);
             })
-            console.log("recipes", rec);
             setRecipes(rec);
-            console.log(recipes.length)
         })
     },[id])
 
@@ -119,8 +117,8 @@ function RecetaRow({category, id, classes}) {
                 <div style={{marginBottom: '50px'}}>
                 <h2 style={{position: 'relative', color: BLACK_BUTTON_PRIMARY,  textAlign: "left", fontWeight: 'bold', left: '20px'}}>{category}</h2>
                 <div className={classes.recipesContainer}>
-                    {recipes && recipes.map((recipy) => (
-                        <Link to="/receta-post" className={classes.recipyLink} onClick={() => setRecipy(recipy.id)}>
+                    {recipes && recipes.map((recipy, i) => (
+                        <Link key={i} to="/receta-post" className={classes.recipyLink} onClick={() => setRecipy(recipy.id)}>
                             <div 
                                 className={classes.recipeContainer}
                                 style={{backgroundImage: `url(${recipy.image})`}}

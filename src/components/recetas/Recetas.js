@@ -104,8 +104,8 @@ function Recetas({classes}) {
             {/* Recipes */}
             <div className={classes.recipesContainer}>
                 {/* Receta Row */}
-                {categories  && categories.map((category) => (
-                    <RecetaRow category={category.displayTitle} id={category.id}/>
+                {categories  && categories.map((category, i) => (
+                    <RecetaRow key={i} category={category.displayTitle} id={category.id}/>
                 ))}
             </div>
             

@@ -121,10 +121,6 @@ function RecetaPost({classes}) {
     classes = useStyles();
 
     useEffect(() => {
-        console.log(categoryId);
-        console.log(categoryTitle);
-        console.log(recipyId);
-
         if(categoryId){
             firebase.db.collection("recetas").doc(categoryId).collection("listaRecetas").doc(recipyId).onSnapshot(snapshot => {
                 setTitle(snapshot.data().titulo);
@@ -207,9 +203,9 @@ function RecetaPost({classes}) {
                         <Col md={6}>   
                             <p className={classes.subTitle}><FormatListBulletedRoundedIcon className={classes.subtitleIcon}/> Proceso</p>
                                 {steps && steps.map((item, i) => (
-                                    <div className={classes.processContainer}>
+                                    <div key={item.id} className={classes.processContainer}>
                                         <p className={classes.number}>{i+1}</p>
-                                        <p key={item.id} className={classes.textItem}>{item.texto}</p>
+                                        <p className={classes.textItem}>{item.texto}</p>
                                     </div>
                                 ))}
                         </Col>

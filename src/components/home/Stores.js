@@ -72,8 +72,8 @@ function Stores({classes}) {
         <div id={"tiendas"} className={classes.backgroundContainer}>
             <h1 className={classes.title}>¿Dónde nos encontramos?</h1>
             <Row className={classes.logosContainer}>
-                {stores && stores.map(store => (
-                    <Col sm={6} lg={3}>
+                {stores && stores.map((store, i) => (
+                    <Col key={i} sm={6} lg={3}>
                     
                         <div className={classes.logoContainer}>
                             <img alt="Logo tienda" className={classes.logoImg} src={store.image} onClick={() => {

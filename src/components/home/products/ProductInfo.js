@@ -62,8 +62,8 @@ export default function ProductInfo({classes, position, benefits, type, phrase})
             </div>
             <h3 className={classes.productPhrase} style={{textAlign: isMobile ? "center" : position}}>{phrase}</h3>
             <div>
-                {benefits.map((b) => (
-                    <p className={classes.productBenefits} style={{textAlign: isMobile ? "center" : position}}><CheckRoundedIcon style={{fontSize: '30px'}}/>{b}</p>
+                {benefits.map((b, i) => (
+                    <p key={i} className={classes.productBenefits} style={{textAlign: isMobile ? "center" : position}}><CheckRoundedIcon style={{fontSize: '30px'}}/>{b}</p>
                 ))}
             </div>
             {/* <div style={{textAlign: position}}>
