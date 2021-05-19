@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) =>({
     slideImage: {
       width: '80%',
       margin: 'auto',
+      maxWidth: "500px",
       borderRadius: '10px',
       [theme.breakpoints.down('576')]: {
         width: '90%'

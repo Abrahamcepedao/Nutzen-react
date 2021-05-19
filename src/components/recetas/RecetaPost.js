@@ -211,11 +211,14 @@ function RecetaPost({classes}) {
                         </Col>
                     </Row>
                     
-                    
-                    <p className={classes.subTitle}><PlaylistAddCheckRoundedIcon className={classes.subtitleIcon}/> Notas</p>
-                        {notes && notes.map(item => (
-                            <p key={item.id} className={classes.textItem}><FiberManualRecordRoundedIcon style={{fontSize: '30px'}}/> {item.texto}</p>
-                        ))}
+                    {notes.length !== 0 && (
+                        <>
+                            <p className={classes.subTitle}><PlaylistAddCheckRoundedIcon className={classes.subtitleIcon}/> Notas</p>
+                            {notes.map(item => (
+                                <p key={item.id} className={classes.textItem}><FiberManualRecordRoundedIcon style={{fontSize: '30px'}}/> {item.texto}</p>
+                            ))}
+                        </>
+                    )}
                 </div>
             </div>
             {/* Footer */}

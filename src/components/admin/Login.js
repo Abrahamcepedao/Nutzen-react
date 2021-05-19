@@ -149,7 +149,9 @@ function Login({classes}) {
                 </FormControl>
                 <BlackButton 
                     disabled={!password}
-                    onClick={setUser}>
+                    onClick={setUser}
+                    onSubmit={setUser}
+                    type="submit">
                     Login
                 </BlackButton>
             </form>

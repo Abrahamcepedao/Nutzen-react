@@ -42,6 +42,8 @@ const useStyles = makeStyles((theme) => ({
     height: '450px',
     borderRadius: '10px',
     backgroundImage: 'linear-gradient(to bottom, rgba(0,0,0,0)0%, rgb(0,0,0,0.8)100%)',
+    paddingLeft: "10px",
+    paddingRight: "10px",
   },
   recipyLink: {
     '&:hover': {
@@ -108,7 +110,7 @@ function RecetaRow({category, id, classes}) {
     }
 
     const calculateLength = (title) => {
-        return (450 - 32 * (Math.floor(title.length / 20)+1))
+        return (450 - 32 * (Math.floor(title.length / 22)+1))
     }
 
     return (

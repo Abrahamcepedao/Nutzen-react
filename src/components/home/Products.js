@@ -45,9 +45,9 @@ const useStyles = makeStyles((theme) =>({
 }));
 
 const benefits = [
-    ["benefit1", "benefit2", "benefit3"],
-    ["benefit1", "benefit2", "benefit3"],
-    ["benefit1", "benefit2", "benefit3"]
+    ["alto contenido en proteínas", "fuente de grasas saludables", "perfecto para deportistas", "da energía", "bajo índice glicémico (miel de agave)"],
+    ["alto contenido de antioxidantes", "ayuda a mantener la mente clara", "alto contenido en proteínas", "fuente de grasas saludables", "perfecto para deportistas", "da energía", "poder saciante"],
+    ["ideal para la dieta", "sin azúcar, sin sucralosa, sin estevia", "alto contenido en proteínas", "fuente de grasas saludables", "perfecto para deportistas", "da energía", "poder saciante"]
 ]
 
 function Products({classes}) {

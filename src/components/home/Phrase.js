@@ -64,7 +64,7 @@ function Phrase({classes}) {
         <div className={classes.phraseBackground} style={{backgroundAttachment: isDesktop && "fixed"}}>
             <div className={classes.overlay}>
                 <div className={classes.phraseContainer}>
-                    <FormatQuoteIcon style={{fontSize: '35px'}}/>
+                    {/* <FormatQuoteIcon style={{fontSize: '35px'}}/> */}
                     <h1 className={classes.phrase}>{phrase}</h1>
                 </div>
             </div>
